@@ -1,0 +1,1033 @@
+<resources>
+    <dimen name="sp_22">22sp</dimen>
+    <dimen name="sp_26">26sp</dimen>
+    <dimen name="sp_20">20sp</dimen>
+    <dimen name="sp_13">13sp</dimen>
+    <dimen name="sp_10">10sp</dimen>
+    <dimen name="sp_11">11sp</dimen>
+    <dimen name="sp_15">15sp</dimen>
+    <dimen name="sp_17">17sp</dimen>
+    <dimen name="d_36">36dp</dimen>
+    <dimen name="d_66">66dp</dimen>
+    <dimen name="d_64">64dp</dimen>
+    <dimen name="d_157">157dp</dimen>
+    <dimen name="d_23">23dp</dimen>
+    <dimen name="d_68">68dp</dimen>
+    <dimen name="d_42">42dp</dimen>
+    <dimen name="d_184">184dp</dimen>
+    <dimen name="d_134">134dp</dimen>
+    <dimen name="d_126">126dp</dimen>
+    <dimen name="d_107">107dp</dimen>
+    <dimen name="dp_142">142dp</dimen>
+    <dimen name="dp_168">168dp</dimen>
+    <dimen name="dp_13">13dp</dimen>
+
+    <dimen name="height_hot_comic">
+        600.0dp
+    </dimen>
+    <dimen name="txt_shop_detail_top_icon_width">
+        30.0dp
+    </dimen>
+    <dimen name="label_title_size">
+        28.0dp
+    </dimen>
+    <dimen name="padding_label_view">
+        1.0dp
+    </dimen>
+    <dimen name="length_0">
+        0.0dp
+    </dimen>
+    <dimen name="length_1">
+        1.0dp
+    </dimen>
+    <dimen name="length_10">
+        10.0dp
+    </dimen>
+    <dimen name="length_100">
+        100.0dp
+    </dimen>
+    <dimen name="length_12">
+        12.0dp
+    </dimen>
+    <dimen name="length_120">
+        120.0dp
+    </dimen>
+    <dimen name="length_13">
+        13.0dp
+    </dimen>
+    <dimen name="length_14">
+        14.0dp
+    </dimen>
+    <dimen name="length_144">
+        144.0dp
+    </dimen>
+    <dimen name="length_15">
+        15.0dp
+    </dimen>
+    <dimen name="length_16">
+        16.0dp
+    </dimen>
+    <dimen name="d_165">
+        165.0dp
+    </dimen>
+    <dimen name="d_312">
+        312.0dp
+    </dimen>
+    <dimen name="d_168">
+        168.0dp
+    </dimen>
+    <dimen name="length_17">
+        17.0dp
+    </dimen>
+    <dimen name="length_18">
+        18.0dp
+    </dimen>
+    <dimen name="length_1px">
+        1.0px
+    </dimen>
+    <dimen name="length_2">
+        2.0dp
+    </dimen>
+    <dimen name="length_20">
+        20.0dp
+    </dimen>
+    <dimen name="length_200">
+        200.0dp
+    </dimen>
+    <dimen name="length_22">
+        22.0dp
+    </dimen>
+    <dimen name="length_23">
+        23.0dp
+    </dimen>
+    <dimen name="length_24">
+        24.0dp
+    </dimen>
+    <dimen name="length_25">
+        25.0dp
+    </dimen>
+    <dimen name="length_250">
+        250.0dp
+    </dimen>
+    <dimen name="length_26">
+        26.0dp
+    </dimen>
+    <dimen name="length_28">
+        28.0dp
+    </dimen>
+    <dimen name="length_3">
+        3.0dp
+    </dimen>
+    <dimen name="length_300">
+        300.0dp
+    </dimen>
+    <dimen name="length_34">
+        34.0dp
+    </dimen>
+    <dimen name="length_36">
+        36.0dp
+    </dimen>
+    <dimen name="length_4">
+        4.0dp
+    </dimen>
+    <dimen name="length_40">
+        40.0dp
+    </dimen>
+    <dimen name="length_45">
+        45.0dp
+    </dimen>
+    <dimen name="length_47">
+        47.0dp
+    </dimen>
+    <dimen name="length_48">
+        48.0dp
+    </dimen>
+    <dimen name="length_5">
+        5.0dp
+    </dimen>
+    <dimen name="length_50">
+        50.0dp
+    </dimen>
+    <dimen name="length_6">
+        6.0dp
+    </dimen>
+    <dimen name="length_60">
+        60.0dp
+    </dimen>
+    <dimen name="length_65">
+        65.0dp
+    </dimen>
+    <dimen name="length_7">
+        7.0dp
+    </dimen>
+    <dimen name="length_8">
+        8.0dp
+    </dimen>
+    <dimen name="length_80">
+        80.0dp
+    </dimen>
+    <dimen name="length_87">
+        87.0dp
+    </dimen>
+    <dimen name="length_90">
+        90.0dp
+    </dimen>
+    <dimen name="d_105">
+        105.0dp
+    </dimen>
+    <dimen name="length_9">
+        9.0dp
+    </dimen>
+    <dimen name="d_9">
+        9.0dp
+    </dimen>
+    <dimen name="d_10">
+        10.0dp
+    </dimen>
+    <dimen name="d_100">
+        100.0dp
+    </dimen>
+    <dimen name="d_12">
+        12.0dp
+    </dimen>
+    <dimen name="d_13">
+        13.0dp
+    </dimen>
+    <dimen name="d_14">
+        14.0dp
+    </dimen>
+    <dimen name="d_15">
+        15.0dp
+    </dimen>
+    <dimen name="d_2">
+        2.0dp
+    </dimen>
+    <dimen name="d_20">
+        20.0dp
+    </dimen>
+    <dimen name="d_24">
+        24.0dp
+    </dimen>
+    <dimen name="d_25">
+        25.0dp
+    </dimen>
+    <dimen name="d_28">
+        28.0dp
+    </dimen>
+    <dimen name="d_290">
+        290.0dp
+    </dimen>
+    <dimen name="d_3">
+        3.0dp
+    </dimen>
+    <dimen name="d_34">
+        34.0dp
+    </dimen>
+    <dimen name="d_340">
+        340.0dp
+    </dimen>
+    <dimen name="d_5">
+        5.0dp
+    </dimen>
+
+    <dimen name="d_6">
+        6.0dp
+    </dimen>
+    <dimen name="d_62">
+        62.0dp
+    </dimen>
+    <dimen name="d_8">
+        8.0dp
+    </dimen>
+    <dimen name="d_80">
+        80.0dp
+    </dimen>
+    <dimen name="d_85">
+        85.0dp
+    </dimen>
+    <dimen name="abc_action_bar_content_inset_material">
+        16.0dp
+    </dimen>
+    <dimen name="abc_action_bar_content_inset_with_nav">
+        72.0dp
+    </dimen>
+    <dimen name="abc_action_bar_default_height_material">
+        56.0dp
+    </dimen>
+    <dimen name="abc_action_bar_default_padding_end_material">
+        0.0dp
+    </dimen>
+    <dimen name="abc_action_bar_default_padding_start_material">
+        0.0dp
+    </dimen>
+    <dimen name="abc_action_bar_elevation_material">
+        4.0dp
+    </dimen>
+    <dimen name="abc_action_bar_icon_vertical_padding_material">
+        16.0dp
+    </dimen>
+    <dimen name="abc_action_bar_overflow_padding_end_material">
+        10.0dp
+    </dimen>
+    <dimen name="abc_action_bar_overflow_padding_start_material">
+        6.0dp
+    </dimen>
+    <dimen name="abc_action_bar_stacked_max_height">
+        48.0dp
+    </dimen>
+    <dimen name="abc_action_bar_stacked_tab_max_width">
+        180.0dp
+    </dimen>
+    <dimen name="abc_action_bar_subtitle_bottom_margin_material">
+        5.0dp
+    </dimen>
+    <dimen name="abc_action_bar_subtitle_top_margin_material">
+        -3.0dp
+    </dimen>
+    <dimen name="abc_action_button_min_height_material">
+        48.0dp
+    </dimen>
+    <dimen name="abc_action_button_min_width_material">
+        48.0dp
+    </dimen>
+    <dimen name="abc_action_button_min_width_overflow_material">
+        36.0dp
+    </dimen>
+    <dimen name="abc_alert_dialog_button_bar_height">
+        48.0dp
+    </dimen>
+    <dimen name="abc_alert_dialog_button_dimen">
+        48.0dp
+    </dimen>
+    <item name="abc_button_inset_horizontal_material" type="dimen">
+
+
+        @dimen/abc_control_inset_material
+
+
+    </item>
+    <dimen name="abc_button_inset_vertical_material">
+        6.0dp
+    </dimen>
+    <dimen name="abc_button_padding_horizontal_material">
+        8.0dp
+    </dimen>
+    <item name="abc_button_padding_vertical_material" type="dimen">
+
+
+        @dimen/abc_control_padding_material
+
+
+    </item>
+    <dimen name="abc_cascading_menus_min_smallest_width">
+        720.0dp
+    </dimen>
+    <dimen name="abc_config_prefDialogWidth">
+        320.0dp
+    </dimen>
+    <dimen name="abc_control_corner_material">
+        2.0dp
+    </dimen>
+    <dimen name="abc_control_inset_material">
+        4.0dp
+    </dimen>
+    <dimen name="abc_control_padding_material">
+        4.0dp
+    </dimen>
+    <item name="abc_dialog_fixed_height_major" type="dimen">
+
+
+        79.99999%
+
+
+    </item>
+    <item name="abc_dialog_fixed_height_minor" type="dimen">
+
+
+        100.0%
+
+
+    </item>
+    <dimen name="abc_dialog_fixed_width_major">
+        320.0dp
+    </dimen>
+    <dimen name="abc_dialog_fixed_width_minor">
+        320.0dp
+    </dimen>
+    <dimen name="abc_dialog_list_padding_bottom_no_buttons">
+        8.0dp
+    </dimen>
+    <dimen name="abc_dialog_list_padding_top_no_title">
+        8.0dp
+    </dimen>
+    <item name="abc_dialog_min_width_major" type="dimen">
+
+
+        65.0%
+
+
+    </item>
+    <item name="abc_dialog_min_width_minor" type="dimen">
+
+
+        95.00001%
+
+
+    </item>
+    <dimen name="abc_dialog_padding_material">
+        24.0dp
+    </dimen>
+    <dimen name="abc_dialog_padding_top_material">
+        18.0dp
+    </dimen>
+    <dimen name="abc_dialog_title_divider_material">
+        8.0dp
+    </dimen>
+    <item name="abc_disabled_alpha_material_dark" type="dimen">
+
+
+        0.3
+
+
+    </item>
+    <item name="abc_disabled_alpha_material_light" type="dimen">
+
+
+        0.26
+
+
+    </item>
+    <dimen name="abc_dropdownitem_icon_width">
+        32.0dp
+    </dimen>
+    <dimen name="abc_dropdownitem_text_padding_left">
+        8.0dp
+    </dimen>
+    <dimen name="abc_dropdownitem_text_padding_right">
+        8.0dp
+    </dimen>
+    <dimen name="abc_edit_text_inset_bottom_material">
+        7.0dp
+    </dimen>
+    <dimen name="abc_edit_text_inset_horizontal_material">
+        4.0dp
+    </dimen>
+    <dimen name="abc_edit_text_inset_top_material">
+        10.0dp
+    </dimen>
+    <dimen name="abc_floating_window_z">
+        16.0dp
+    </dimen>
+    <item name="abc_list_item_padding_horizontal_material" type="dimen">
+
+
+        @dimen/abc_action_bar_content_inset_material
+
+
+    </item>
+    <dimen name="abc_panel_menu_list_width">
+        296.0dp
+    </dimen>
+    <dimen name="abc_progress_bar_height_material">
+        4.0dp
+    </dimen>
+    <dimen name="abc_search_view_preferred_height">
+        48.0dp
+    </dimen>
+    <dimen name="abc_search_view_preferred_width">
+        320.0dp
+    </dimen>
+    <dimen name="abc_seekbar_track_background_height_material">
+        2.0dp
+    </dimen>
+    <dimen name="abc_seekbar_track_progress_height_material">
+        2.0dp
+    </dimen>
+    <dimen name="abc_select_dialog_padding_start_material">
+        20.0dp
+    </dimen>
+    <dimen name="abc_switch_padding">
+        0.0px
+    </dimen>
+    <dimen name="abc_text_size_body_1_material">
+        14.0sp
+    </dimen>
+    <dimen name="abc_text_size_body_2_material">
+        14.0sp
+    </dimen>
+    <dimen name="abc_text_size_button_material">
+        14.0sp
+    </dimen>
+    <dimen name="abc_text_size_caption_material">
+        12.0sp
+    </dimen>
+    <dimen name="abc_text_size_display_1_material">
+        34.0sp
+    </dimen>
+    <dimen name="abc_text_size_display_2_material">
+        45.0sp
+    </dimen>
+    <dimen name="abc_text_size_display_3_material">
+        56.0sp
+    </dimen>
+    <dimen name="abc_text_size_display_4_material">
+        112.0sp
+    </dimen>
+    <dimen name="abc_text_size_headline_material">
+        24.0sp
+    </dimen>
+    <dimen name="abc_text_size_large_material">
+        22.0sp
+    </dimen>
+    <dimen name="abc_text_size_medium_material">
+        18.0sp
+    </dimen>
+    <dimen name="abc_text_size_menu_header_material">
+        14.0sp
+    </dimen>
+    <dimen name="abc_text_size_menu_material">
+        16.0sp
+    </dimen>
+    <dimen name="abc_text_size_small_material">
+        14.0sp
+    </dimen>
+    <dimen name="abc_text_size_subhead_material">
+        16.0sp
+    </dimen>
+    <dimen name="abc_text_size_subtitle_material_toolbar">
+        16.0dp
+    </dimen>
+    <dimen name="abc_text_size_title_material">
+        20.0sp
+    </dimen>
+    <dimen name="abc_text_size_title_material_toolbar">
+        20.0dp
+    </dimen>
+    <dimen name="activity_horizontal_margin">
+        16.0dp
+    </dimen>
+    <dimen name="activity_vertical_margin">
+        16.0dp
+    </dimen>
+    <dimen name="bar_height">
+        32.0dp
+    </dimen>
+    <dimen name="bar_tool_btn_width">
+        56.0dp
+    </dimen>
+    <dimen name="cardview_compat_inset_shadow">
+        1.0dp
+    </dimen>
+    <dimen name="cardview_default_elevation">
+        2.0dp
+    </dimen>
+    <dimen name="cardview_default_radius">
+        2.0dp
+    </dimen>
+    <dimen name="compat_button_inset_horizontal_material">
+        4.0dp
+    </dimen>
+    <dimen name="compat_button_inset_vertical_material">
+        6.0dp
+    </dimen>
+    <dimen name="compat_button_padding_horizontal_material">
+        8.0dp
+    </dimen>
+    <dimen name="compat_button_padding_vertical_material">
+        4.0dp
+    </dimen>
+    <dimen name="compat_control_corner_material">
+        2.0dp
+    </dimen>
+    <dimen name="d_11">
+        11.0dp
+    </dimen>
+    <dimen name="d_1">
+        1.0dp
+    </dimen>
+    <dimen name="d_110">
+        110.0dp
+    </dimen>
+    <dimen name="d_115">
+        115.0dp
+    </dimen>
+    <dimen name="d_120">
+        120.0dp
+    </dimen>
+    <dimen name="d_125">
+        125.0dp
+    </dimen>
+    <dimen name="d_130">
+        130.0dp
+    </dimen>
+    <dimen name="d_140">
+        140.0dp
+    </dimen>
+    <dimen name="d_150">
+        150.0dp
+    </dimen>
+    <dimen name="d_16">
+        16.0dp
+    </dimen>
+    <dimen name="d_17">
+        17.0dp
+    </dimen>
+    <dimen name="d_174">
+        174.0dp
+    </dimen>
+    <dimen name="d_180">
+        180.0dp
+    </dimen>
+    <dimen name="d_185">
+        185.0dp
+    </dimen>
+    <dimen name="d_190">
+        190.0dp
+    </dimen>
+    <dimen name="d_195">
+        195.0dp
+    </dimen>
+    <dimen name="d_200">
+        200.0dp
+    </dimen>
+    <dimen name="d_210">
+        210.0dp
+    </dimen>
+    <dimen name="d_18">
+        18.0dp
+    </dimen>
+    <dimen name="d_19">
+        19.0dp
+    </dimen>
+    <dimen name="d_22">
+        22.0dp
+    </dimen>
+    <dimen name="d_220">
+        220.0dp
+    </dimen>
+    <dimen name="d_237">
+        237.0dp
+    </dimen>
+    <dimen name="d_250">
+        250.0dp
+    </dimen>
+    <dimen name="d_260">
+        260.0dp
+    </dimen>
+    <dimen name="d_30">
+        30.0dp
+    </dimen>
+    <dimen name="d_31">
+        31.0dp
+    </dimen>
+    <dimen name="d_32">
+        32.0dp
+    </dimen>
+    <dimen name="d_320">
+        320.0dp
+    </dimen>
+    <dimen name="d_35">
+        35.0dp
+    </dimen>
+    <dimen name="d_45">
+        45.0dp
+    </dimen>
+    <dimen name="d_48">
+        48.0dp
+    </dimen>
+    <dimen name="d_49">
+        49.0dp
+    </dimen>
+    <dimen name="d_50">
+        50.0dp
+    </dimen>
+    <dimen name="d_56">
+        56.0dp
+    </dimen>
+    <dimen name="d_500">
+        500.0dp
+    </dimen>
+    <dimen name="d_55">
+        55.0dp
+    </dimen>
+    <dimen name="d_60">
+        60.0dp
+    </dimen>
+    <dimen name="d_7">
+        7.0dp
+    </dimen>
+    <dimen name="d_70">
+        70.0dp
+    </dimen>
+    <dimen name="d_54">
+        54.0dp
+    </dimen>
+    <dimen name="d_72">
+        72.0dp
+    </dimen>
+    <dimen name="d_75">
+        75.0dp
+    </dimen>
+    <dimen name="d_96">
+        96.0dp
+    </dimen>
+    <dimen name="def_height">
+        50.0dp
+    </dimen>
+    <dimen name="design_appbar_elevation">
+        4.0dp
+    </dimen>
+    <dimen name="design_bottom_navigation_active_item_max_width">
+        168.0dp
+    </dimen>
+    <dimen name="design_bottom_navigation_active_text_size">
+        14.0sp
+    </dimen>
+    <dimen name="design_bottom_navigation_elevation">
+        8.0dp
+    </dimen>
+    <dimen name="design_bottom_navigation_height">
+        56.0dp
+    </dimen>
+    <dimen name="design_bottom_navigation_item_max_width">
+        96.0dp
+    </dimen>
+    <dimen name="design_bottom_navigation_item_min_width">
+        56.0dp
+    </dimen>
+    <dimen name="design_bottom_navigation_margin">
+        8.0dp
+    </dimen>
+    <dimen name="design_bottom_navigation_shadow_height">
+        1.0dp
+    </dimen>
+    <dimen name="design_bottom_navigation_text_size">
+        12.0sp
+    </dimen>
+    <dimen name="design_bottom_sheet_modal_elevation">
+        16.0dp
+    </dimen>
+    <dimen name="design_bottom_sheet_peek_height_min">
+        64.0dp
+    </dimen>
+    <dimen name="design_fab_border_width">
+        0.5dp
+    </dimen>
+    <dimen name="design_fab_elevation">
+        6.0dp
+    </dimen>
+    <dimen name="design_fab_image_size">
+        24.0dp
+    </dimen>
+    <dimen name="design_fab_size_mini">
+        40.0dp
+    </dimen>
+    <dimen name="design_fab_size_normal">
+        56.0dp
+    </dimen>
+    <dimen name="design_fab_translation_z_pressed">
+        6.0dp
+    </dimen>
+    <dimen name="design_navigation_elevation">
+        16.0dp
+    </dimen>
+    <dimen name="design_navigation_icon_padding">
+        32.0dp
+    </dimen>
+    <dimen name="design_navigation_icon_size">
+        24.0dp
+    </dimen>
+    <dimen name="design_navigation_max_width">
+        280.0dp
+    </dimen>
+    <dimen name="design_navigation_padding_bottom">
+        8.0dp
+    </dimen>
+    <dimen name="design_navigation_separator_vertical_padding">
+        8.0dp
+    </dimen>
+    <dimen name="design_snackbar_action_inline_max_width">
+        128.0dp
+    </dimen>
+    <dimen name="design_snackbar_background_corner_radius">
+        0.0dp
+    </dimen>
+    <dimen name="design_snackbar_elevation">
+        6.0dp
+    </dimen>
+    <dimen name="design_snackbar_extra_spacing_horizontal">
+        0.0dp
+    </dimen>
+    <dimen name="design_snackbar_max_width">
+        -1.0px
+    </dimen>
+    <dimen name="design_snackbar_min_width">
+        -1.0px
+    </dimen>
+    <dimen name="design_snackbar_padding_horizontal">
+        12.0dp
+    </dimen>
+    <dimen name="design_snackbar_padding_vertical">
+        14.0dp
+    </dimen>
+    <dimen name="design_snackbar_padding_vertical_2lines">
+        24.0dp
+    </dimen>
+    <dimen name="design_snackbar_text_size">
+        14.0sp
+    </dimen>
+    <dimen name="design_tab_max_width">
+        264.0dp
+    </dimen>
+    <dimen name="design_tab_scrollable_min_width">
+        72.0dp
+    </dimen>
+    <dimen name="design_tab_text_size">
+        14.0sp
+    </dimen>
+    <dimen name="design_tab_text_size_2line">
+        12.0sp
+    </dimen>
+    <item name="disabled_alpha_material_dark" type="dimen">
+
+
+        0.3
+
+
+    </item>
+    <item name="disabled_alpha_material_light" type="dimen">
+
+
+        0.26
+
+
+    </item>
+    <dimen name="dp_10">
+        10.0dp
+    </dimen>
+    <dimen name="dp_12">
+        12.0dp
+    </dimen>
+    <dimen name="dp_4">
+        4.0dp
+    </dimen>
+    <dimen name="dp_40">
+        40.0dp
+    </dimen>
+    <dimen name="dp_32">32dp</dimen>
+    <dimen name="dp_5">
+        5.0dp
+    </dimen>
+    <dimen name="dp_50">
+        50.0dp
+    </dimen>
+    <dimen name="fastscroll_default_thickness">
+        8.0dp
+    </dimen>
+    <dimen name="fastscroll_margin">
+        0.0dp
+    </dimen>
+    <dimen name="fastscroll_minimum_range">
+        50.0dp
+    </dimen>
+    <item name="highlight_alpha_material_colored" type="dimen">
+
+
+        0.26
+
+
+    </item>
+    <item name="highlight_alpha_material_dark" type="dimen">
+
+
+        0.2
+
+
+    </item>
+    <item name="highlight_alpha_material_light" type="dimen">
+
+
+        0.12
+
+
+    </item>
+    <item name="hint_alpha_material_dark" type="dimen">
+
+
+        0.5
+
+
+    </item>
+    <item name="hint_alpha_material_light" type="dimen">
+
+
+        0.38
+
+
+    </item>
+    <item name="hint_pressed_alpha_material_dark" type="dimen">
+
+
+        0.7
+
+
+    </item>
+    <item name="hint_pressed_alpha_material_light" type="dimen">
+
+
+        0.54
+
+
+    </item>
+    <dimen name="horizontalspit_view_height">
+        0.6dp
+    </dimen>
+    <dimen name="indicator_margin">
+        10.0dp
+    </dimen>
+    <dimen name="item_emoticon_size_default">
+        32.0dp
+    </dimen>
+    <dimen name="item_touch_helper_max_drag_scroll_per_frame">
+        20.0dp
+    </dimen>
+    <dimen name="item_touch_helper_swipe_escape_max_velocity">
+        800.0dp
+    </dimen>
+    <dimen name="item_touch_helper_swipe_escape_velocity">
+        120.0dp
+    </dimen>
+    <dimen name="notification_action_icon_size">
+        32.0dp
+    </dimen>
+    <dimen name="notification_action_text_size">
+        13.0sp
+    </dimen>
+    <dimen name="notification_big_circle_margin">
+        12.0dp
+    </dimen>
+    <dimen name="notification_content_margin_start">
+        8.0dp
+    </dimen>
+    <dimen name="notification_large_icon_height">
+        64.0dp
+    </dimen>
+    <dimen name="notification_large_icon_width">
+        64.0dp
+    </dimen>
+    <dimen name="notification_main_column_padding_top">
+        10.0dp
+    </dimen>
+    <item name="notification_media_narrow_margin" type="dimen">
+
+
+        @dimen/notification_content_margin_start
+
+
+    </item>
+    <dimen name="notification_right_icon_size">
+        16.0dp
+    </dimen>
+    <dimen name="notification_right_side_padding_top">
+        4.0dp
+    </dimen>
+    <dimen name="notification_small_icon_background_padding">
+        3.0dp
+    </dimen>
+    <dimen name="notification_small_icon_size_as_large">
+        24.0dp
+    </dimen>
+    <dimen name="notification_subtext_size">
+        13.0sp
+    </dimen>
+    <dimen name="notification_top_pad">
+        10.0dp
+    </dimen>
+    <dimen name="notification_top_pad_large_text">
+        5.0dp
+    </dimen>
+    <dimen name="sp_14">
+        14.0sp
+    </dimen>
+    <dimen name="sp_12">
+        12.0sp
+    </dimen>
+    <dimen name="tooltip_corner_radius">
+        2.0dp
+    </dimen>
+    <dimen name="tooltip_horizontal_padding">
+        16.0dp
+    </dimen>
+    <dimen name="tooltip_margin">
+        8.0dp
+    </dimen>
+    <dimen name="tooltip_precise_anchor_extra_offset">
+        8.0dp
+    </dimen>
+    <dimen name="tooltip_precise_anchor_threshold">
+        96.0dp
+    </dimen>
+    <dimen name="tooltip_vertical_padding">
+        6.5dp
+    </dimen>
+    <dimen name="tooltip_y_offset_non_touch">
+        0.0dp
+    </dimen>
+    <dimen name="tooltip_y_offset_touch">
+        16.0dp
+    </dimen>
+    <dimen name="ucrop_default_crop_frame_stoke_width">
+        1.0dp
+    </dimen>
+    <dimen name="ucrop_default_crop_grid_stoke_width">
+        1.0dp
+    </dimen>
+    <dimen name="ucrop_default_crop_rect_corner_touch_area_line_length">
+        10.0dp
+    </dimen>
+    <dimen name="ucrop_default_crop_rect_corner_touch_threshold">
+        30.0dp
+    </dimen>
+    <dimen name="ucrop_default_crop_rect_min_size">
+        100.0dp
+    </dimen>
+    <dimen name="ucrop_height_crop_aspect_ratio_text">
+        40.0dp
+    </dimen>
+    <dimen name="ucrop_height_horizontal_wheel_progress_line">
+        20.0dp
+    </dimen>
+    <dimen name="ucrop_height_wrapper_controls">
+        64.0dp
+    </dimen>
+    <dimen name="ucrop_height_wrapper_states">
+        72.0dp
+    </dimen>
+    <dimen name="ucrop_margin_horizontal_wheel_progress_line">
+        10.0dp
+    </dimen>
+    <dimen name="ucrop_padding_crop_frame">
+        16.0dp
+    </dimen>
+    <dimen name="ucrop_progress_size">
+        30.0dp
+    </dimen>
+    <dimen name="ucrop_size_dot_scale_text_view">
+        8.0dp
+    </dimen>
+    <dimen name="ucrop_size_wrapper_rotate_button">
+        50.0dp
+    </dimen>
+    <dimen name="ucrop_text_size_widget_text">
+        13.0sp
+    </dimen>
+    <dimen name="ucrop_width_horizontal_wheel_progress_line">
+        2.0dp
+    </dimen>
+    <dimen name="verticalspit_view_width">
+        0.6dp
+    </dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+</resources>

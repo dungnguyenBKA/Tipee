@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primary_color">@color/orange</color>
+    <color name="orange">#FF782D</color>
+    <color name="text_hint">#8A8A8F</color>
+    <color name="border">#EEEEEE</color>
+
+    <color name="primary1">@color/orange</color>
+    <color name="primary2">#262A41</color>
+    <color name="gray_333333">#333333</color>
+    <color name="gray_FAFAFA">#FAFAFA</color>
+    <color name="gray_F2F2F2">#EEEEEE</color>
+    <color name="gray_8A8A8F">#8A8A8F</color>
+    <color name="gray_121212">#121212</color>
+    <color name="gray_02">@color/gray_8A8A8F</color>
+    <color name="gray_05">@color/gray_FAFAFA</color>
+    <color name="background">#E5E5E5</color>
+    <color name="gray_DADADA">#DADADA</color>
+    <color name="gray_base">#8E8E93</color>
+    <color name="white_0_1">#1AFFFFFF</color>
+    <color name="blue">#3499FF</color>
+    <color name="black_0_5">#80000000</color>
+    <color name="color_262A41">#262A41</color>
+    <color name="green_14CE03">#14CE03</color>
+    <color name="color_707070">#707070</color>
+    <color name="color_707076">#707076</color>
+    <color name="color_00ADE9">#00ADE9</color>
+    <color name="color_F5F5F5">#F5F5F5</color>
+    <color name="red">#FF0000</color>
+    <!--default stroke color in InputTextLayout in unfocus state-->
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#F2F2F2</color>
+    <color name="color_bg_final_item_continue">#FFF2EA</color>
+    <color name="color_bg_final_item_complete">#E8FBE6</color>
+    <color name="highlight_comment_color">#FF8758</color>
+    <color name="color_111217">#111217</color>
+    <color name="color_1B1C23">#1B1C23</color>
+    <color name="color_14151A">#14151A</color>
+    <color name="color_262831">#262831</color>
+    <color name="color25294B">#25294B</color>
+    <color name="color_1FCF84">#1FCF84</color>
+    <color name="black_25294B">#25294B</color>
+    <color name="color_FFF7DC">#FFF7DC</color>
+    <color name="color_37C5F2">#37C5F2</color>
+    <color name="color_5CE5B2">#5CE5B2</color>
+    <color name="color_FFF1F1">#FFF1F1</color>
+    <color name="color_734800"> #734800</color>
+    <color name="color_9CF6D4">#9CF6D4</color>
+    <color name="color_66000000">#66000000</color>
+    <color name="color_FFD752">#FFD752</color>
+</resources>

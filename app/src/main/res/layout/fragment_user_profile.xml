@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlUserInform"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:padding="@dimen/d_8"
+            android:layout_centerVertical="true"
+            android:src="@drawable/avatar_placeholder"
+            android:id="@+id/ivAvatar"
+            android:layout_width="@dimen/d_80"
+            android:layout_height="@dimen/d_80"/>
+
+        <LinearLayout
+            android:paddingHorizontal="@dimen/d_8"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_toEndOf="@+id/ivAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/ivAvatar"
+            android:layout_alignParentEnd="true">
+
+            <TextView
+                android:text="Chào mừng bạn đến với Tipee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Đăng nhập/ Đăng kí"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <include layout="@layout/space_3dp"/>
+
+    <LinearLayout
+        android:layout_marginVertical="@dimen/d_8"
+        android:paddingHorizontal="@dimen/d_8"
+        android:orientation="horizontal"
+        android:id="@+id/llOrderManager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/ic_baseline_check_circle_outline_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/d_8"
+            android:text="Quản lý đơn hàng"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d_8" />
+
+    </LinearLayout>
+
+    <include layout="@layout/space_1dp"/>
+
+    <LinearLayout
+        android:layout_marginVertical="@dimen/d_8"
+        android:paddingHorizontal="@dimen/d_8"
+        android:orientation="horizontal"
+        android:id="@+id/llFavoriteProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/ic_baseline_check_circle_outline_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/d_8"
+            android:text="Sản phẩm yêu thích"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d_8" />
+
+    </LinearLayout>
+
+    <include layout="@layout/space_1dp"/>
+
+    <LinearLayout
+        android:layout_marginVertical="@dimen/d_8"
+        android:paddingHorizontal="@dimen/d_8"
+        android:orientation="horizontal"
+        android:id="@+id/llBuyProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/ic_baseline_check_circle_outline_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/d_8"
+            android:text="Sản phẩm đã mua"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d_8" />
+
+    </LinearLayout>
+
+    <include layout="@layout/space_1dp"/>
+
+    <LinearLayout
+        android:layout_marginVertical="@dimen/d_8"
+        android:paddingHorizontal="@dimen/d_8"
+        android:orientation="horizontal"
+        android:id="@+id/llYourShop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/ic_baseline_check_circle_outline_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginStart="@dimen/d_8"
+            android:text="Shop của bạn"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d_8" />
+
+    </LinearLayout>
+
+    <include layout="@layout/space_3dp"/>
+
+</LinearLayout>
