@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tipee.databinding.Category1Binding
 import com.example.tipee.screen.main.PlaceHolderActivity
+import com.example.tipee.screen.productdetail.ProductDetailActivity
 
 class HomepageAdapter(var listener: OnViewClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     interface OnViewClickListener{
@@ -50,7 +51,7 @@ class HomepageAdapter(var listener: OnViewClickListener) : RecyclerView.Adapter<
 
             b.rvCate1.adapter = Category1Adapter(object : Category1Adapter.OnViewClickListener{
                 override fun onViewClick() {
-                    PlaceHolderActivity.start(b.root.context)
+                    ProductDetailActivity.start(b.root.context)
                 }
             })
         }

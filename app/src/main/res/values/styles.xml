@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomRatingBarMedium" parent="android:Widget.RatingBar">
+        <item name="android:minHeight">@dimen/d_22</item>
+        <item name="android:maxHeight">@dimen/d_22</item>
+        <item name="android:isIndicator">false</item>
+        <item name="android:thumb">@null</item>
+        <item name="colorControlNormal">#FFEB3B</item>
+        <item name="colorControlActivated">@color/gray_DADADA</item>
+    </style>
+
+    <style name="CustomRatingBarSmall" parent="android:Widget.RatingBar">
+        <item name="android:minHeight">@dimen/d_16</item>
+        <item name="android:maxHeight">@dimen/d_16</item>
+        <item name="android:isIndicator">false</item>
+        <item name="android:thumb">@null</item>
+        <item name="colorControlNormal">#FFEB3B</item>
+        <item name="colorControlActivated">@color/gray_DADADA</item>
+    </style>
+
+    <style name="CustomRatingBar" parent="android:Widget.RatingBar">
+        <item name="android:minHeight">@dimen/d_22</item>
+        <item name="android:maxHeight">@dimen/d_22</item>
+        <item name="android:progressDrawable">@drawable/abc_ratingbar_small_material</item>
+        <item name="android:indeterminateDrawable">@drawable/abc_ratingbar_small_material</item>
+        <item name="android:isIndicator">false</item>
+        <item name="android:thumb">@null</item>
+    </style>
+</resources>

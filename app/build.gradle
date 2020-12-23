@@ -69,4 +69,7 @@ dependencies {
 
     // circle image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // html text view
+    implementation 'org.sufficientlysecure:html-textview:4.0'
 }
