@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tipee">
-        <activity android:name=".screen.productdetail.ProductDetailActivity"></activity>
+        <activity android:name=".widget.HtmlActivity"></activity>
+        <activity android:name=".screen.productdetail.ProductDetailActivity" />
         <activity android:name=".screen.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
