@@ -30,6 +30,10 @@ class ProductDetailActivity : BaseActivity() {
     }
 
     override fun initData() {
+
+    }
+
+    override fun configViews() {
         loadDetailProduct()
     }
 

@@ -17,6 +17,10 @@ class PlaceHolderActivity : BaseActivity() {
 
     }
 
+    override fun configViews() {
+
+    }
+
     companion object{
         @JvmStatic
         fun start(context: Context) {

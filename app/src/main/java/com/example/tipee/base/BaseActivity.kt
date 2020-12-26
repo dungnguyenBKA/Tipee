@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 abstract class BaseActivity : AppCompatActivity() {
     abstract fun getViewBinding() : View
     abstract fun initData()
+    abstract fun configViews()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getViewBinding())
         initData()
+        configViews()
     }
 }

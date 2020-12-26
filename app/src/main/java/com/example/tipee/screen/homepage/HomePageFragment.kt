@@ -23,4 +23,8 @@ class HomePageFragment: BaseFragment() {
             }
         })
     }
+
+    override fun configViews() {
+
+    }
 }

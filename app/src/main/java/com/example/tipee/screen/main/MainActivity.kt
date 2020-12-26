@@ -38,4 +38,8 @@ class MainActivity : BaseActivity() {
             true
         }
     }
+
+    override fun configViews() {
+
+    }
 }
