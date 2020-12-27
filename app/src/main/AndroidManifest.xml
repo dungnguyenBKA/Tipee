@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tipee">
-        <activity android:name=".base.ErrorActivity"></activity>
+        <activity android:name=".screen.cart.CartActivity"></activity>
+        <activity android:name=".base.ErrorActivity" />
         <activity
             android:name=".screen.login.LoginActivity"
             android:windowSoftInputMode="adjustPan" />

@@ -2,6 +2,7 @@ package com.example.tipee.screen.productdetail
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -10,11 +11,15 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import com.example.tipee.base.BaseActivity
 import com.example.tipee.databinding.ActivityProductDetailBinding
 import com.example.tipee.model.ProductDetail
+import com.example.tipee.screen.cart.CartActivity
 import com.example.tipee.screen.main.PlaceHolderActivity
 import com.example.tipee.screen.productdetail.adapter.ImageAdapter
 import com.example.tipee.utils.LoadImage
+import com.example.tipee.utils.hide
+import com.example.tipee.utils.show
 import com.example.tipee.widget.HtmlActivity
 import com.example.tipee.widget.ShopView
+import com.google.android.material.appbar.AppBarLayout
 
 class ProductDetailActivity : BaseActivity() {
     companion object{
@@ -42,6 +47,7 @@ class ProductDetailActivity : BaseActivity() {
                 id = it
             }
         }
+        viewModel.loadProductDetail(id)
         observableData()
     }
 
@@ -67,7 +73,9 @@ class ProductDetailActivity : BaseActivity() {
             }
         })
 
-        viewModel.loadProductDetail(id)
+        mBinding.ivCart.setOnClickListener {
+            CartActivity.start(this)
+        }
     }
 
     private fun observableData(){

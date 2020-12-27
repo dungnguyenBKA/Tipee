@@ -10,3 +10,11 @@ fun View.setEnableView(isEnable: Boolean){
         this.alpha = 0.3f
     }
 }
+
+fun View.hide(){
+    this.visibility = View.GONE
+}
+
+fun View.show(){
+    this.visibility = View.VISIBLE
+}

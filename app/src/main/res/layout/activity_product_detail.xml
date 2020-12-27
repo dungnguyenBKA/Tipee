@@ -8,46 +8,50 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
+        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:fitsSystemWindows="true"
-        android:theme="@style/Theme.Tipee.AppBarOverlay">
+        app:liftOnScroll="true"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
-            android:background="@color/transparent"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_collapseMode="pin">
+            app:layout_scrollFlags="enterAlways|snap">
 
             <RelativeLayout
-                android:visibility="gone"
+                android:layout_marginEnd="@dimen/d_13"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/d_30">
 
-                <TextView
-                    android:text="Layout1"
+                <ImageView
+                    android:adjustViewBounds="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/ivBack"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_round_arrow_back_24" />
 
+                <ImageView
+                    android:id="@+id/ivLike"
+                    app:srcCompat="@drawable/ic_baseline_favorite_border_24"
+                    android:adjustViewBounds="true"
+                    android:layout_toStartOf="@id/ivShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:layout_marginStart="@dimen/d_5"
+                    app:srcCompat="@drawable/ic_baseline_share_24"
+                    android:id="@+id/ivShare"
+                    android:adjustViewBounds="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
             </RelativeLayout>
 
-            <RelativeLayout
-                android:visibility="gone"
-                tools:visibility="visible"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:text="Layout2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </RelativeLayout>
-
-        </androidx.appcompat.widget.Toolbar>
-
-
+        </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
@@ -104,13 +108,11 @@
                     android:textColor="@color/gray_333333"
                     android:textSize="@dimen/sp_20" />
 
-                <TextView
+                <com.example.tipee.widget.CounterView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito_sans"
-                    android:paddingHorizontal="@dimen/d_13"
-                    android:text="Chọn mẫu"
-                    android:textColor="@color/gray_333333" />
+                    android:layout_marginVertical="@dimen/d_10"
+                    android:paddingHorizontal="@dimen/d_13" />
 
                 <include layout="@layout/space_3dp" />
 
@@ -155,23 +157,23 @@
                         android:paddingHorizontal="@dimen/d_13" />
 
                     <ImageView
-                        android:adjustViewBounds="true"
-                        android:layout_below="@id/tvShortDescription"
                         android:id="@+id/ivBlurProduct"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/d_150"/>
+                        android:layout_height="@dimen/d_200"
+                        android:layout_below="@id/tvShortDescription"
+                        android:adjustViewBounds="true" />
 
                     <RelativeLayout
                         android:id="@+id/viewMore"
-                        android:layout_below="@+id/ivBlurProduct"
-                        android:layout_centerHorizontal="true"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ivBlurProduct"
+                        android:layout_centerHorizontal="true">
 
                         <TextView
-                            android:layout_centerInParent="true"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/d_30"
+                            android:layout_centerInParent="true"
                             android:layout_marginVertical="@dimen/d_15"
                             android:drawablePadding="@dimen/d_5"
                             android:fontFamily="@font/nunito_sans_semibold"
@@ -180,7 +182,6 @@
                             android:textSize="@dimen/sp_17"
                             app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
                     </RelativeLayout>
-
 
 
                 </RelativeLayout>
@@ -203,12 +204,12 @@
             android:paddingVertical="@dimen/d_8">
 
             <ImageView
-                android:padding="@dimen/d_5"
                 android:id="@+id/ivCart"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:adjustViewBounds="true"
+                android:padding="@dimen/d_5"
                 app:srcCompat="@drawable/ic_outline_shopping_cart_24" />
 
             <TextView
