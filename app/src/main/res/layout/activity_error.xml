@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/d_120"
+            android:layout_height="@dimen/d_120"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_baseline_error_24" />
+
+        <TextView
+            android:id="@+id/tvErrorDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:text="Có lỗi xảy ra, vui lòng thử lại"
+            android:textColor="@color/gray_333333"
+            android:textSize="@dimen/sp_20" />
+
+        <TextView
+            android:id="@+id/btnRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_20"
+            android:background="@drawable/btn_text_blue"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:paddingHorizontal="@dimen/d_13"
+            android:paddingVertical="@dimen/d_5"
+            android:text="Refresh"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20" />
+
+    </LinearLayout>
+
+</RelativeLayout>

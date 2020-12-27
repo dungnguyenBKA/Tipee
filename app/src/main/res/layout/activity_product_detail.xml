@@ -15,9 +15,37 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+            android:background="@color/transparent"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_collapseMode="pin" />
+            app:layout_collapseMode="pin">
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Layout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Layout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
 
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -48,6 +76,7 @@
 
 
                 <TextView
+                    android:id="@+id/tvProductName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito_sans"
@@ -126,6 +155,7 @@
                         android:paddingHorizontal="@dimen/d_13" />
 
                     <ImageView
+                        android:adjustViewBounds="true"
                         android:layout_below="@id/tvShortDescription"
                         android:id="@+id/ivBlurProduct"
                         android:layout_width="match_parent"
@@ -173,12 +203,13 @@
             android:paddingVertical="@dimen/d_8">
 
             <ImageView
+                android:padding="@dimen/d_5"
                 android:id="@+id/ivCart"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:adjustViewBounds="true"
-                app:srcCompat="@drawable/item_placeholder" />
+                app:srcCompat="@drawable/ic_outline_shopping_cart_24" />
 
             <TextView
                 android:id="@+id/tvPick"

@@ -49,9 +49,10 @@ class HomepageAdapter(var listener: OnViewClickListener) : RecyclerView.Adapter<
                 listener.onTitleClick()
             }
 
-            b.rvCate1.adapter = Category1Adapter(object : Category1Adapter.OnViewClickListener{
+            b.rvCate1.adapter = Category1Adapter(object : Category1Adapter.OnViewClickListener {
                 override fun onViewClick() {
-                    ProductDetailActivity.start(b.root.context)
+                    // TODO: 12/27/2020 change id
+                    ProductDetailActivity.start(b.root.context, "56316096")
                 }
             })
         }
