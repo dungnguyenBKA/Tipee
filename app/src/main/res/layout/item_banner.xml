@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:background="@color/gray_8A8A8F"
+        android:adjustViewBounds="true"
+        android:id="@+id/ivBannerBG"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:layout_marginHorizontal="@dimen/d_13"
+        android:background="@color/red_ff3945"
+        android:adjustViewBounds="true"
+        android:id="@+id/ivBannerFG"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_150" />
+
+</RelativeLayout>

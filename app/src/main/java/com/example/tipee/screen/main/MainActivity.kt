@@ -5,6 +5,7 @@ import com.example.tipee.R
 import com.example.tipee.base.BaseActivity
 import com.example.tipee.databinding.ActivityMainBinding
 import com.example.tipee.screen.homepage.HomePageFragment
+import com.example.tipee.screen.test.banner.TestBannerActivity
 import com.example.tipee.screen.userprofile.ProfileFragment
 
 class MainActivity : BaseActivity() {
@@ -40,6 +41,6 @@ class MainActivity : BaseActivity() {
     }
 
     override fun configViews() {
-
+        TestBannerActivity.start(this)
     }
 }
