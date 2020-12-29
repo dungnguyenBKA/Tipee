@@ -7,10 +7,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.Toolbar
+        android:layout_marginTop="@dimen/d_30"
         android:id="@+id/toolBar"
         app:title="Bruh"
         app:titleTextColor="@color/black"
-        android:fitsSystemWindows="true"
         android:background="@color/transparent"
         android:elevation="@dimen/d_2"
         android:layout_width="match_parent"
@@ -28,6 +28,7 @@
             android:layout_height="match_parent">
 
             <com.youth.banner.Banner
+                android:visibility="gone"
                 app:banner_indicator_gravity="left"
                 app:banner_indicator_marginBottom="@dimen/d_13"
                 app:banner_indicator_marginLeft="@dimen/d_13"
@@ -37,6 +38,11 @@
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/d_200" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerBanner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d_250"/>
 
 
             <ImageView

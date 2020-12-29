@@ -36,15 +36,17 @@
         <item name="colorAccent">@color/primary1</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
-
+        <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:fitsSystemWindows">false</item>
         <!--<item name="colorPrimary">@color/white</item>-->
         <!--<item name="colorPrimaryDark">@color/white</item>-->
         <!--<item name="colorAccent">@color/colorAccent</item>-->
         <!--<item name="android:textViewStyle">@style/RobotoTextViewStyle</item>-->
         <!--<item name="android:homeAsUpIndicator">@drawable/nav_btn_back_black</item>-->
         <!--<item name="android:windowIsTranslucent">true</item>-->
-        <item name="android:windowActivityTransitions">true</item>
+
         <!-- uncomment this make feedback screen work unprobably -->
         <!--<item name="android:windowSharedElementReturnTransition">@transition/lb_shared_element_return_transition</item>-->
 
