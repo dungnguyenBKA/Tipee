@@ -9,21 +9,4 @@
         android:id="@+id/ivBannerBG"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <ImageView
-        android:layout_marginHorizontal="@dimen/d_13"
-        android:background="@color/red_ff3945"
-        android:adjustViewBounds="true"
-        android:id="@+id/ivBannerFG"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/d_150" />
-
-    <ImageView
-        android:id="@+id/layer1"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/avatar_placeholder"
-        android:layout_width="@dimen/d_80"
-        android:layout_height="@dimen/d_80"/>
 </RelativeLayout>

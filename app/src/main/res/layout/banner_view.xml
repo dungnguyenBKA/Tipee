@@ -27,23 +27,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.youth.banner.Banner
-                android:visibility="gone"
-                app:banner_indicator_gravity="left"
-                app:banner_indicator_marginBottom="@dimen/d_13"
-                app:banner_indicator_marginLeft="@dimen/d_13"
-                android:background="@color/white"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:id="@+id/banner"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/d_200" />
-
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPagerBanner"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/d_250"/>
 
+            <com.youth.banner.Banner
+                android:id="@+id/banner2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d_250"/>
 
             <ImageView
                 android:src="@drawable/item_placeholder"

@@ -82,4 +82,6 @@ dependencies {
 
     // banner
     implementation 'com.youth.banner:banner:2.1.0'
+
+    implementation 'com.to.aboomy:pager2banner:1.0.1'
 }
