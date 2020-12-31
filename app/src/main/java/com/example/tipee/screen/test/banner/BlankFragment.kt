@@ -23,9 +23,7 @@ import kotlin.math.abs
 class BlankFragment : BaseFragment() {
     enum class Direction{
         LEFT,
-        RIGHT,
-        UP,
-        DOWN
+        RIGHT
     }
     private lateinit var mBinding: FragmentBannerBinding
     override fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?): View {
@@ -41,8 +39,9 @@ class BlankFragment : BaseFragment() {
     }
 
     override fun configViews() {
-        addLayout(Direction.LEFT, 200f, 1000)
-        addLayout(Direction.RIGHT,150f, 1500)
+        addLayoutBG()
+        addLayout(Direction.LEFT, 200f, 1000, R.drawable.b2)
+        addLayout(Direction.RIGHT,150f, 1500, R.drawable.b3)
     }
 
     companion object {
@@ -54,9 +53,12 @@ class BlankFragment : BaseFragment() {
                 }
             }
     }
-    fun addLayout(direction: Direction, distance: Float, _duration: Long){
+    fun addLayoutBG(){
+        mBinding.ivBannerBG.setImageResource(R.drawable.b1)
+    }
+    fun addLayout(direction: Direction, distance: Float, _duration: Long, id: Int){
         val newLayer = ImageView(requireContext()).apply {
-            setImageResource(R.drawable.chest)
+            setImageResource(id)
             adjustViewBounds = true
             elevation = animatorList.size.toFloat()
         }
@@ -70,11 +72,17 @@ class BlankFragment : BaseFragment() {
             dis = -distance
         }
         val param = RelativeLayout.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.MATCH_PARENT
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
         ).apply {
             addRule(alignParent)
             addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
+//            if(direction == Direction.LEFT){
+//                marginStart = -distance.toInt()
+//            } else {
+//                marginEnd = -distance.toInt()
+//            }
+//            setMargins(-distance.toInt(), 0, 0, 0)
         }
         mBinding.root.addView(newLayer, param)
         val animator = ObjectAnimator.ofFloat(newLayer, "translationX", dis).apply {
@@ -85,15 +93,10 @@ class BlankFragment : BaseFragment() {
     private val animatorList = arrayListOf<ObjectAnimator>()
 
     fun loadAnimation(){
+        val ani = ObjectAnimator.ofFloat(mBinding.test, "translationX", 80f)
+        ani.start()
         animatorList.forEach { animator ->
             animator.start()
         }
-    }
-
-    fun reverseAnimation(){
-//        animatorList.forEach { animator ->
-//            animator.interpolator = Interpolator { abs(it -1f) }
-//            animator.start()
-//        }
     }
 }

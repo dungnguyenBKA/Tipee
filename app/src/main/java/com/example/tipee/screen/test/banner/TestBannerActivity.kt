@@ -7,6 +7,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.tipee.base.BaseActivity
 import com.example.tipee.databinding.BannerViewBinding
@@ -18,6 +19,7 @@ import com.youth.banner.listener.OnPageChangeListener
 import java.util.*
 
 class TestBannerActivity : BaseActivity() {
+    var currentPage = 0
     companion object {
         @JvmStatic
         fun start(context: Context) {
@@ -40,39 +42,47 @@ class TestBannerActivity : BaseActivity() {
     private lateinit var pagerAdapter : BannerPagerAdapter
 
     override fun configViews() {
-        pagerAdapter = BannerPagerAdapter(this@TestBannerActivity, arrayListOf("1","2","3"))
+        pagerAdapter = BannerPagerAdapter(this@TestBannerActivity, arrayListOf("1","2","3","4"))
+        val rAdapter = BannerPagerRecyclerAdapter(arrayListOf("1","2","3","4"))
         mBinding.viewPagerBanner.apply {
-            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            adapter = rAdapter
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
-                    Log.d("zun", "pos: $position")
-                    pagerAdapter.loadAnimation(position)
+                    super.onPageSelected(position)
+                    ((mBinding.viewPagerBanner.getChildAt(0) as RecyclerView).findViewHolderForAdapterPosition(position) as BannerPagerRecyclerAdapter.ViewHolder).loadAnimation()
                 }
             })
-            adapter = pagerAdapter
         }
+        mBinding.indicator.setViewPager(mBinding.viewPagerBanner)
 
-        val bannerAdapter = ImageAdapter(arrayListOf("1","2","3"))
-        mBinding.banner2.apply {
-            adapter = bannerAdapter
-            addOnPageChangeListener(object : OnPageChangeListener{
-                override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
-                ) {
+        mBinding.bannerP2.apply {
+            adapter = rAdapter
+            addOnAttachStateChangeListener(object: View.OnAttachStateChangeListener{
+                override fun onViewAttachedToWindow(p0: View?) {
 
                 }
 
-                override fun onPageSelected(position: Int) {
-                }
-
-                override fun onPageScrollStateChanged(state: Int) {
+                override fun onViewDetachedFromWindow(p0: View?) {
 
                 }
-
             })
         }
 
+//        val handler = Handler()
+//        val update = Runnable {
+//            if (currentPage == pagerAdapter.data.size) {
+//                currentPage = 0
+//            }
+//
+//            //The second parameter ensures smooth scrolling
+//            mBinding.viewPagerBanner.setCurrentItem(currentPage++, true)
+//        }
+//
+//        Timer().schedule(object : TimerTask() {
+//            override fun run() {
+//                handler.post(update)
+//            }
+//        }, 2000, 2000)
     }
 
     private fun setWindowFlag(bits: Int, on: Boolean) {

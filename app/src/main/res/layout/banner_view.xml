@@ -27,15 +27,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerBanner"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/d_250"/>
+                android:layout_height="250dp">
 
-            <com.youth.banner.Banner
-                android:id="@+id/banner2"
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <me.relex.circleindicator.CircleIndicator3
+                    android:id="@+id/indicator"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d_48"/>
+
+            </RelativeLayout>
+
+            <com.to.aboomy.pager2banner.Banner
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/d_250"/>
+                android:layout_height="wrap_content"
+                android:id="@+id/bannerP2"/>
 
             <ImageView
                 android:src="@drawable/item_placeholder"

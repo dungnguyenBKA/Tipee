@@ -4,9 +4,20 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:background="@color/gray_8A8A8F"
+        android:layout_alignParentBottom="true"
         android:adjustViewBounds="true"
         android:id="@+id/ivBannerBG"
+        android:background="@color/red"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:elevation="@dimen/d_20"
+        android:id="@+id/test"
+        android:background="@color/blue"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-80dp"
+        android:layout_width="@dimen/d_20"
+        android:layout_height="match_parent"/>
 </RelativeLayout>
