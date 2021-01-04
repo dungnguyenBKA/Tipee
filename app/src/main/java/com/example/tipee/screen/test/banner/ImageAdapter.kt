@@ -1,8 +1,8 @@
 package com.example.tipee.screen.test.banner
 
 import android.animation.ObjectAnimator
+import android.graphics.Color
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -10,73 +10,31 @@ import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tipee.R
 import com.example.tipee.databinding.ItemBannerBinding
-import com.example.tipee.model.ProductDetail
 import com.youth.banner.adapter.BannerAdapter
+import com.youth.banner.adapter.BannerImageAdapter
+import com.youth.banner.holder.BannerImageHolder
 
 
-class ImageAdapter(mData: List<String>) : BannerAdapter<String, ImageAdapter.BannerViewHolder>(mData) {
-    override fun onCreateHolder(parent: ViewGroup, viewType: Int): BannerViewHolder {
-        return BannerViewHolder(
+class ImageAdapter(mData: List<String>) :
+    BannerAdapter<String, ImageAdapter.ViewHolder>(mData){
+    override fun onCreateHolder(parent: ViewGroup, viewType: Int): ImageAdapter.ViewHolder {
+        return ViewHolder(
             ItemBannerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
-    override fun onViewAttachedToWindow(holder: BannerViewHolder) {
-        super.onViewAttachedToWindow(holder)
-        holder.loadAnimation()
+    override fun onBindView(
+        holder: ImageAdapter.ViewHolder,
+        data: String?,
+        position: Int,
+        size: Int
+    ) {
+        holder.bind(position)
     }
 
-    class BannerViewHolder(var b: ItemBannerBinding) : RecyclerView.ViewHolder(b.root) {
-        private val animatorList = arrayListOf<ObjectAnimator>()
-        fun bind(){
-            addLayout(BlankFragment.Direction.LEFT, 200f, 1000)
-            addLayout(BlankFragment.Direction.RIGHT,150f, 1500)
-        }
+    class ViewHolder(var b: ItemBannerBinding) : RecyclerView.ViewHolder(b.root){
+        fun bind(position: Int){
 
-        fun loadAnimation(){
-            val handler = Handler()
-            handler.postDelayed(
-                Runnable {
-                    animatorList.forEach { animator ->
-                        animator.start()
-                    }
-                }, 1500
-            )
-        }
-
-        private fun addLayout(direction: BlankFragment.Direction, distance: Float, _duration: Long){
-            val newLayer = ImageView(b.root.context).apply {
-                setImageResource(R.drawable.chest)
-                adjustViewBounds = true
-                elevation = animatorList.size.toFloat()
-            }
-            var alignParent = 0
-            var dis = 0f
-            if(direction == BlankFragment.Direction.LEFT){
-                alignParent = RelativeLayout.ALIGN_PARENT_START
-                dis = distance
-            } else {
-                alignParent = RelativeLayout.ALIGN_PARENT_END
-                dis = -distance
-            }
-            val param = RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            ).apply {
-                addRule(alignParent)
-                addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
-            }
-            b.root.addView(newLayer, param)
-            val animator = ObjectAnimator.ofFloat(newLayer, "translationX", dis).apply {
-                duration = _duration
-            }
-            animatorList.add(animator)
         }
     }
-
-    override fun onBindView(holder: BannerViewHolder, data: String, position: Int, size: Int) {
-        holder.bind()
-    }
-
-
 }
