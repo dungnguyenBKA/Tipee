@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tipee.utils.Utils
+import io.reactivex.rxjava3.functions.Consumer
+import org.greenrobot.eventbus.EventBus
 import java.io.Serializable
 
 abstract class BaseActivity : AppCompatActivity() {

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:paddingHorizontal="@dimen/d_13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp_10"
+            android:fontFamily="@font/nunito_sans"
+            android:text="Số lượng"
+            android:textColor="@color/gray_333333"
+            android:textSize="@dimen/sp_17" />
+
+        <com.example.tipee.widget.CounterView
+            android:id="@+id/counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp_10" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp_10"
+            android:fontFamily="@font/nunito_sans"
+            android:text="Thành tiền"
+            android:textColor="@color/gray_333333"
+            android:textSize="@dimen/sp_17" />
+
+        <TextView
+            android:id="@+id/tvBill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp_10"
+            android:fontFamily="@font/nunito_sans"
+            android:text="xxx.000 đ"
+            android:textColor="@color/red_ff3945"
+            android:textSize="@dimen/sp_20" />
+
+        <TextView
+            android:id="@+id/btnSubmitAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_10"
+            android:layout_marginBottom="@dimen/d_13"
+            android:background="@drawable/btn_text_red"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:paddingTop="@dimen/d_7"
+            android:paddingBottom="@dimen/d_8"
+            android:text="Xác nhận"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

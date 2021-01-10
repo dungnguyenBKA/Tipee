@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import androidx.lifecycle.MutableLiveData
 import com.example.tipee.databinding.LayoutCounterBinding
 
 class CounterView : LinearLayout {
@@ -34,14 +35,20 @@ class CounterView : LinearLayout {
 
         mBinding.ivDown.setOnClickListener {
             if(mBinding.tvCounter.text.toString().toInt()-1>=min){
-                mBinding.tvCounter.text = (mBinding.tvCounter.text.toString().toInt()-1).toString()
+                curVal.value = mBinding.tvCounter.text.toString().toInt()-1
+                mBinding.tvCounter.text = curVal.value.toString()
             }
         }
 
         mBinding.ivUp.setOnClickListener {
             if(mBinding.tvCounter.text.toString().toInt()+1<=max){
-                mBinding.tvCounter.text = (mBinding.tvCounter.text.toString().toInt()+1).toString()
+                curVal.value = mBinding.tvCounter.text.toString().toInt()+1
+                mBinding.tvCounter.text = curVal.value.toString()
             }
         }
     }
+
+    fun getCurrent() = mBinding.tvCounter.text.toString().toInt()
+
+    var curVal = MutableLiveData<Int>()
 }

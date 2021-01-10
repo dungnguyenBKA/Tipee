@@ -29,8 +29,7 @@
             android:fontFamily="@font/nunito_sans_bold"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_20"
-            tools:text="Title" />
-
+            android:text="Giỏ hàng" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -41,11 +40,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCart"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_above="@id/llTotal"
             android:layout_alignParentTop="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_cart" />
+            tools:listitem="@layout/item_cart"
+            tools:itemCount="1"/>
 
         <LinearLayout
             android:id="@+id/llTotal"

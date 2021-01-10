@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.youth.banner.Banner
+        app:banner_infinite_loop="false"
         app:banner_indicator_margin="@dimen/d_10"
         app:banner_indicator_gravity="left"
         android:id="@+id/banner"

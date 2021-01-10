@@ -22,7 +22,7 @@ class ProfileFragment: BaseFragment() {
 
     override fun configViews() {
         mBinding.rlUserInform.setOnClickListener {
-            if(!LoginUtils.isLoginWithRequest(requireContext())){
+            if(!LoginUtils.isLoginWithRequest()){
                 LoginActivity.start(requireContext())
                 Toast.makeText(requireContext(), "Vui lòng đăng nhập để tiếp tục", Toast.LENGTH_SHORT).show()
             }

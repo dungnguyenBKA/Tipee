@@ -41,6 +41,9 @@ class LoginActivity : BaseActivity() {
                 }
             }
         }.attach()
+        mBinding.ivBack.setOnClickListener {
+            onBackPressed()
+        }
     }
 
 }

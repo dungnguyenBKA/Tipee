@@ -1,12 +1,16 @@
 package com.example.tipee.screen.main
 
 import android.view.View
+import android.widget.Toast
+import androidx.core.view.ViewCompat
 import com.example.tipee.R
 import com.example.tipee.base.BaseActivity
 import com.example.tipee.databinding.ActivityMainBinding
 import com.example.tipee.screen.homepage.HomePageFragment
 import com.example.tipee.screen.test.banner.TestBannerActivity
 import com.example.tipee.screen.userprofile.ProfileFragment
+import com.example.tipee.utils.*
+import java.util.*
 
 class MainActivity : BaseActivity() {
     private lateinit var mBinding: ActivityMainBinding
@@ -41,6 +45,22 @@ class MainActivity : BaseActivity() {
     }
 
     override fun configViews() {
-        TestBannerActivity.start(this)
+
+    }
+
+    var isBackPressed = false
+    override fun onBackPressed() {
+        if(isBackPressed){
+            finish()
+        } else {
+            Toast.makeText(this, "Back 1 lần nữa để thoát ứng dụng", Toast.LENGTH_SHORT).show()
+            isBackPressed = true
+            Timer().schedule(object : TimerTask(){
+                override fun run() {
+                    isBackPressed = false
+                }
+            }, 2000)
+        }
+
     }
 }

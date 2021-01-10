@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/main_homepage"
+        android:icon="@drawable/ic_round_home_24"
         android:title="Homepage" />
     <item android:id="@+id/main_profile"
+        android:icon="@drawable/ic_round_face_24"
         android:title="Profile" />
 </menu>

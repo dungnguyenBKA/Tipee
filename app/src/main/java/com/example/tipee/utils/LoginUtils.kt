@@ -1,11 +1,9 @@
 package com.example.tipee.utils
 
-import android.content.Context
-
 class LoginUtils {
     companion object{
-        fun isLoginWithRequest(context: Context): Boolean{
-            if(SharedPreferencesUtils.getInstance(context).getString(SharedPreferencesUtils.TOKEN) != ""){
+        fun isLoginWithRequest(): Boolean{
+            if(SharedPreferencesUtils.getInstance().getString(Constant.LOGIN_TOKEN) != ""){
                 return true
             }
             return false
