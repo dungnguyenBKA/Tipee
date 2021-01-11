@@ -1,7 +1,10 @@
 package com.example.tipee.base
 
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import com.example.tipee.databinding.ActivityErrorBinding
+import com.example.tipee.utils.Utils
 
 class ErrorActivity : BaseActivity() {
     companion object{
@@ -29,8 +32,21 @@ class ErrorActivity : BaseActivity() {
 
     override fun configViews() {
         mBinding.btnRefresh.setOnClickListener {
-            setResult(RESULT_OK)
-            finish()
+            showLoadingScreen(mBinding.root)
+            if (Utils.isNetworkConnected(applicationContext)){
+                setResult(RESULT_OK)
+                finish()
+            } else {
+                Handler(Looper.getMainLooper()).postDelayed(Runnable {
+                    closeLoadingScreen()
+                }, 1000)
+            }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        setResult(RESULT_CANCELED)
+        finish()
     }
 }

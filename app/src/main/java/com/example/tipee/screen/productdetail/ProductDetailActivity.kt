@@ -1,30 +1,32 @@
 package com.example.tipee.screen.productdetail
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.room.Room
 import com.example.tipee.base.BaseActivity
 import com.example.tipee.database.AppDatabase
-import com.example.tipee.database.entity.Order
 import com.example.tipee.databinding.ActivityProductDetailBinding
 import com.example.tipee.model.ProductDetail
 import com.example.tipee.screen.cart.CartActivity
 import com.example.tipee.screen.main.PlaceHolderActivity
 import com.example.tipee.screen.productdetail.adapter.ImageAdapter
 import com.example.tipee.utils.LoadImage
+import com.example.tipee.utils.event.DeleteCartEvent
 import com.example.tipee.widget.HtmlActivity
 import com.example.tipee.widget.ShopView
 import com.example.tipee.widget.popup.AddToCartBottomSheet
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
-import java.lang.Exception
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 
+@SuppressLint("SetTextI18n")
 class ProductDetailActivity : BaseActivity() {
     companion object {
         const val ID = "id"
@@ -118,49 +120,19 @@ class ProductDetailActivity : BaseActivity() {
     }
 
     private fun observableData() {
-        viewModel.mProductDetail.observe(this, Observer { productDetail ->
+        viewModel.mProductDetail.observe(this, { productDetail ->
             bindDetailProduct(productDetail)
-
-            mBinding.tvPick.setOnClickListener {
-                AddToCartBottomSheet(
-                    productDetail,
-                    object : AddToCartBottomSheet.OnAddCartListener {
-                        override fun onAddCart(order: Order) {
-                            CoroutineScope(IO).launch {
-                                try {
-                                    db.orderDao().insertOrder(order)
-                                    runOnUiThread {
-                                        Toast.makeText(
-                                            this@ProductDetailActivity,
-                                            "Thêm thành công",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                                } catch (e: Exception) {
-                                    e.printStackTrace()
-                                    runOnUiThread {
-                                        Toast.makeText(
-                                            this@ProductDetailActivity,
-                                            "Có lỗi xảy ra",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                                }
-                            }
-                        }
-                    }).show(supportFragmentManager, "")
-            }
         })
 
-        viewModel.isLoading.observe(this, Observer {
+        viewModel.isLoading.observe(this, {
             if (it) {
-                // showLoadingScreen
+                showLoadingScreen(mBinding.root)
             } else {
-                // closeLoadingScreen
+                closeLoadingScreen()
             }
         })
 
-        viewModel.isError.observe(this, Observer {
+        viewModel.isError.observe(this, {
             if (it) {
                 showError()
             }
@@ -179,6 +151,52 @@ class ProductDetailActivity : BaseActivity() {
         mBinding.shopView.loadShopData()
         mBinding.viewMore.setOnClickListener {
             HtmlActivity.start(this, "Thông tin & Giới thiệu", productDetail.description)
+        }
+
+        CoroutineScope(Main).launch {
+            if(db.orderDao().findOrderByProductId(id).isNotEmpty()){
+                mBinding.tvPick.text = "Sửa đơn hàng"
+            } else {
+                mBinding.tvPick.text = "Chọn mua"
+            }
+        }
+
+        mBinding.tvPick.setOnClickListener {
+            AddToCartBottomSheet(
+                productDetail,
+                object : AddToCartBottomSheet.OnAddCartListener {
+                    override fun onAddCartSuccess() {
+                        runOnUiThread {
+                            Toast.makeText(this@ProductDetailActivity, "Thêm thành công", Toast.LENGTH_SHORT).show()
+                            mBinding.tvPick.text = "Sửa đơn hàng"
+                        }
+                    }
+
+                    override fun onAddFail() {
+                        runOnUiThread {
+                            Toast.makeText(this@ProductDetailActivity, "Có lỗi xảy ra", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }).show(supportFragmentManager, "")
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
+    }
+
+    @Subscribe
+    fun onDeleteOrder(deleteCartEvent: DeleteCartEvent){
+        if(deleteCartEvent.order.productId == id){
+            mBinding.tvPick.text = "Chọn mua"
         }
     }
 }

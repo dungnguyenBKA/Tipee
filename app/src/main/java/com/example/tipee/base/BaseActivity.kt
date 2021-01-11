@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.ethanhua.skeleton.Skeleton
+import com.ethanhua.skeleton.SkeletonScreen
+import com.example.tipee.R
 import com.example.tipee.utils.Utils
 import io.reactivex.rxjava3.functions.Consumer
 import org.greenrobot.eventbus.EventBus
@@ -42,8 +45,24 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 229 && resultCode == RESULT_OK) {
-            onRefreshing()
+        if (requestCode == 229) {
+            if(resultCode == RESULT_OK){
+                onRefreshing()
+            } else if(resultCode == RESULT_CANCELED){
+                finish()
+            }
+        }
+    }
+    private lateinit var skeletonScreen: SkeletonScreen
+    fun showLoadingScreen(rootView: View){
+        skeletonScreen = Skeleton.bind(rootView)
+            .load(R.layout.layout_loading)
+            .show()
+    }
+
+    fun closeLoadingScreen(){
+        if(this::skeletonScreen.isInitialized){
+            skeletonScreen.hide()
         }
     }
 }

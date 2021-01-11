@@ -2,7 +2,11 @@ package com.example.tipee.screen.main
 
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import com.ethanhua.skeleton.Skeleton
+import com.example.tipee.R
 import com.example.tipee.base.BaseActivity
 import com.example.tipee.databinding.FragmentPlaceHolderBinding
 
@@ -18,7 +22,10 @@ class PlaceHolderActivity : BaseActivity() {
     }
 
     override fun configViews() {
-
+        showLoadingScreen(mBinding.root)
+        Handler(Looper.getMainLooper()).postDelayed(Runnable {
+            closeLoadingScreen()
+        }, 3000)
     }
 
     companion object{

@@ -9,13 +9,14 @@ import com.example.tipee.base.BaseActivity
 import com.example.tipee.database.AppDatabase
 import com.example.tipee.database.entity.Order
 import com.example.tipee.databinding.ActivityCartBinding
-import com.example.tipee.model.ProductDetail
 import com.example.tipee.screen.productdetail.ProductDetailActivity
+import com.example.tipee.utils.MoneyUtils
+import com.example.tipee.utils.event.DeleteCartEvent
 import com.example.tipee.utils.setEnableView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.lang.Exception
+import org.greenrobot.eventbus.EventBus
 
 class CartActivity : BaseActivity() {
     companion object {
@@ -53,9 +54,11 @@ class CartActivity : BaseActivity() {
                 CoroutineScope(Dispatchers.IO).launch {
                     try {
                         db.orderDao().delete(listOrder[position])
+                        EventBus.getDefault().post(DeleteCartEvent(listOrder[position]))
                         runOnUiThread {
                             listOrder.removeAt(position)
                             mAdapter.notifyItemRemoved(position)
+                            calculateTotalBill(listOrder)
                         }
                     } catch (e: Exception) {
                         e.printStackTrace()
@@ -77,6 +80,7 @@ class CartActivity : BaseActivity() {
             listOrder.addAll(db.orderDao().getAll().toMutableList())
             runOnUiThread {
                 mAdapter.notifyDataSetChanged()
+                calculateTotalBill(listOrder)
             }
         }
 
@@ -87,7 +91,16 @@ class CartActivity : BaseActivity() {
 
     }
 
-    fun toggleSubmitBtn(list: List<Any>) {
+    fun calculateTotalBill(listOrder: MutableList<Order>) {
+        var total = 0
+        listOrder.forEach {
+            total+= it.price
+        }
+        mBinding.tvTotalBill.text = MoneyUtils.toVND(total)
+        toggleSubmitBtn(listOrder)
+    }
+
+    private fun toggleSubmitBtn(list: List<Any>) {
         if (list.isNullOrEmpty()) {
             mBinding.btnSubmit.setEnableView(false)
             return
