@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tipee">
-        <activity android:name=".screen.test.banner.TestBannerActivity"/>
+        <activity android:name=".screen.shopdetail.ShopDetailActivity"></activity>
+        <activity android:name=".screen.test.banner.TestBannerActivity" />
         <activity android:name=".screen.cart.CartActivity" />
         <activity android:name=".base.ErrorActivity" />
         <activity

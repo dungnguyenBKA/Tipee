@@ -8,9 +8,6 @@ import com.ethanhua.skeleton.Skeleton
 import com.ethanhua.skeleton.SkeletonScreen
 import com.example.tipee.R
 import com.example.tipee.utils.Utils
-import io.reactivex.rxjava3.functions.Consumer
-import org.greenrobot.eventbus.EventBus
-import java.io.Serializable
 
 abstract class BaseActivity : AppCompatActivity() {
     abstract fun getViewBinding(): View
@@ -24,6 +21,10 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     open fun onRefreshing(){
+
+    }
+
+    open fun observableData(){
 
     }
 

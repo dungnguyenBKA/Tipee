@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.scwang.smart.refresh.layout.SmartRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/refreshLayout"
+    android:layout_height="match_parent"
+    tools:context=".screen.shopdetail.ShopDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/transparent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvSearch"
+            app:startIconDrawable="@drawable/ic_baseline_search_24"
+            android:background="@color/transparent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d_13"
+            android:hint="Tìm kiếm"
+            app:boxBackgroundColor="@color/transparent"
+            app:boxStrokeColor="@color/blue"
+            app:layout_scrollFlags="enterAlways">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:maxLines="1"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/d_13"
+                android:layout_marginBottom="@dimen/d_13"
+                android:background="@color/transparent"
+                app:elevation="0dp">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    app:layout_scrollFlags="snap|scroll|enterAlways">
+
+                    <include
+                        android:id="@+id/header"
+                        layout="@layout/layout_shop_detail_header" />
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:background="@color/gray_F2F2F2"
+                android:id="@+id/rvShop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
+
+</com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+

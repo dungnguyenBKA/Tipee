@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tipee.databinding.Category1Binding
-import com.example.tipee.screen.main.PlaceHolderActivity
 import com.example.tipee.screen.productdetail.ProductDetailActivity
 
 class HomepageAdapter(var listener: OnViewClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -52,7 +51,7 @@ class HomepageAdapter(var listener: OnViewClickListener) : RecyclerView.Adapter<
             b.rvCate1.adapter = Category1Adapter(object : Category1Adapter.OnViewClickListener {
                 override fun onViewClick() {
                     // TODO: 12/27/2020 change id
-                    ProductDetailActivity.start(b.root.context, "56316096")
+                    ProductDetailActivity.start(b.root.context, "74810915")
                 }
             })
         }

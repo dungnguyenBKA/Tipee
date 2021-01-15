@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/transparent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivShopLogo"
+        android:layout_width="@dimen/d_80"
+        android:layout_height="@dimen/d_80"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/item_placeholder" />
+
+    <LinearLayout
+        android:layout_marginStart="@dimen/d_13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/llInteract"
+        android:layout_toEndOf="@id/ivShopLogo"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvShopName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_333333"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:text="Shop bán đồ chơi"
+            android:textSize="@dimen/sp_20" />
+
+        <TextView
+            android:id="@+id/tvFollowNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_5"
+            android:fontFamily="@font/nunito_sans"
+            android:text="Chưa có theo dõi"
+            android:textColor="@color/gray_333333"
+            android:textSize="@dimen/sp_15" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginStart="@dimen/d_13"
+        android:id="@+id/llInteract"
+        android:layout_width="@dimen/d_100"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:gravity="center"
+            android:paddingVertical="@dimen/d_3"
+            android:background="@drawable/btn_text_stroke"
+            android:id="@+id/btnChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans"
+            android:text="Chat"
+            android:textColor="@color/gray_333333"
+            android:textSize="@dimen/sp_17" />
+
+        <TextView
+            android:gravity="center"
+            android:paddingVertical="@dimen/d_3"
+            android:background="@drawable/btn_text_blue"
+            android:id="@+id/btnFollow"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_5"
+            android:fontFamily="@font/nunito_sans"
+            android:text="Theo dõi"
+            android:textSize="@dimen/sp_17" />
+
+    </LinearLayout>
+
+</RelativeLayout>

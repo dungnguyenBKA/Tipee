@@ -12,4 +12,7 @@ interface TipeeApi {
 
     @GET("products/{productId}")
     fun getProductDetail(@Path("productId") id: String) : Observable<ProductDetail>
+
+    @GET("seller/stores/{seller}/products")
+    fun getShopDetail(@Path("seller") sellerName: String) : Observable<BaseResponse<List<ProductDetail>>>
 }

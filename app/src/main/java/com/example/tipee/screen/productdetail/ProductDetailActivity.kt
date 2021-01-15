@@ -15,6 +15,7 @@ import com.example.tipee.model.ProductDetail
 import com.example.tipee.screen.cart.CartActivity
 import com.example.tipee.screen.main.PlaceHolderActivity
 import com.example.tipee.screen.productdetail.adapter.ImageAdapter
+import com.example.tipee.screen.shopdetail.ShopDetailActivity
 import com.example.tipee.utils.LoadImage
 import com.example.tipee.utils.event.DeleteCartEvent
 import com.example.tipee.widget.HtmlActivity
@@ -79,19 +80,11 @@ class ProductDetailActivity : BaseActivity() {
         }
         mBinding.shopView.setOnShopClickListener(object : ShopView.OnShopViewClickListener {
             override fun onFollowClick(shopId: String) {
-                Toast.makeText(
-                    this@ProductDetailActivity,
-                    "follow shop clicked",
-                    Toast.LENGTH_SHORT
-                ).show()
+
             }
 
             override fun onShopDetailClick(shopId: String) {
-                Toast.makeText(
-                    this@ProductDetailActivity,
-                    "detail shop clicked",
-                    Toast.LENGTH_SHORT
-                ).show()
+                ShopDetailActivity.start(this@ProductDetailActivity)
             }
         })
 
@@ -119,7 +112,7 @@ class ProductDetailActivity : BaseActivity() {
         }
     }
 
-    private fun observableData() {
+    override fun observableData() {
         viewModel.mProductDetail.observe(this, { productDetail ->
             bindDetailProduct(productDetail)
         })
