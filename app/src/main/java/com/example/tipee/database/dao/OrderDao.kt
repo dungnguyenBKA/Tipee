@@ -18,6 +18,6 @@ interface OrderDao {
     @Delete
     suspend fun delete(order: Order)
 
-    @Query("select * from `order` where product_id like :productId")
+    @Query("select * from `order` where productId like :productId")
     suspend fun findOrderByProductId(productId: String): List<Order>
 }

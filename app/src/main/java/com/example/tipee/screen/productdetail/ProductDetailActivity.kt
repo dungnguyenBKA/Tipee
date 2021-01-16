@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.room.Room
 import com.example.tipee.base.BaseActivity
 import com.example.tipee.database.AppDatabase
+import com.example.tipee.database.entity.Order
 import com.example.tipee.databinding.ActivityProductDetailBinding
 import com.example.tipee.model.ProductDetail
 import com.example.tipee.screen.cart.CartActivity
@@ -22,6 +23,7 @@ import com.example.tipee.widget.HtmlActivity
 import com.example.tipee.widget.ShopView
 import com.example.tipee.widget.popup.AddToCartBottomSheet
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
@@ -84,7 +86,7 @@ class ProductDetailActivity : BaseActivity() {
             }
 
             override fun onShopDetailClick(shopId: String) {
-                ShopDetailActivity.start(this@ProductDetailActivity)
+                ShopDetailActivity.start(this@ProductDetailActivity, "tiki-trading")
             }
         })
 
@@ -155,22 +157,39 @@ class ProductDetailActivity : BaseActivity() {
         }
 
         mBinding.tvPick.setOnClickListener {
-            AddToCartBottomSheet(
-                productDetail,
-                object : AddToCartBottomSheet.OnAddCartListener {
-                    override fun onAddCartSuccess() {
-                        runOnUiThread {
-                            Toast.makeText(this@ProductDetailActivity, "Thêm thành công", Toast.LENGTH_SHORT).show()
-                            mBinding.tvPick.text = "Sửa đơn hàng"
-                        }
-                    }
 
-                    override fun onAddFail() {
-                        runOnUiThread {
-                            Toast.makeText(this@ProductDetailActivity, "Có lỗi xảy ra", Toast.LENGTH_SHORT).show()
+            CoroutineScope(IO).launch {
+                val orderFinder = db.orderDao().findOrderByProductId(productDetail.id)
+                val order = if(orderFinder.isNotEmpty()){
+                    orderFinder[0]
+                } else {
+                    Order(
+                        productId = productDetail.id,
+                        productName = productDetail.name,
+                        quantity = 1,
+                        thumbnailUrl = productDetail.thumbnail_url,
+                        price = productDetail.price,
+                        listPrice = productDetail.list_price
+                    )
+                }
+
+                AddToCartBottomSheet(
+                    order,
+                    object : AddToCartBottomSheet.OnAddCartListener {
+                        override fun onAddCartSuccess(order: Order) {
+                            runOnUiThread {
+                                Toast.makeText(this@ProductDetailActivity, "Thành công", Toast.LENGTH_SHORT).show()
+                                mBinding.tvPick.text = "Sửa đơn hàng"
+                            }
                         }
-                    }
-                }).show(supportFragmentManager, "")
+
+                        override fun onAddFail() {
+                            runOnUiThread {
+                                Toast.makeText(this@ProductDetailActivity, "Có lỗi xảy ra", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }).show(supportFragmentManager, "")
+            }
         }
     }
 

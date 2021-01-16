@@ -2,6 +2,8 @@ package com.example.tipee.screen.cart
 
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import androidx.room.Room
@@ -13,6 +15,7 @@ import com.example.tipee.screen.productdetail.ProductDetailActivity
 import com.example.tipee.utils.MoneyUtils
 import com.example.tipee.utils.event.DeleteCartEvent
 import com.example.tipee.utils.setEnableView
+import com.example.tipee.widget.popup.AddToCartBottomSheet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,6 +49,32 @@ class CartActivity : BaseActivity() {
     override fun configViews() {
         val listOrder = mutableListOf<Order>()
         mAdapter = CartAdapter(listOrder, object : CartAdapter.OnCartItemClickListener {
+            override fun onEditItem(order: Order) {
+                AddToCartBottomSheet(
+                    order,
+                    object : AddToCartBottomSheet.OnAddCartListener {
+                        override fun onAddCartSuccess(order: Order) {
+                            Handler(Looper.getMainLooper()).post {
+                                Toast.makeText(this@CartActivity, "Thành công", Toast.LENGTH_SHORT).show()
+                                mAdapter.listOrder.forEach {
+                                    if(it.productId == order.productId){
+                                        it.quantity = order.quantity
+                                        mAdapter.notifyDataSetChanged()
+                                        return@forEach
+                                    }
+                                }
+                                calculateTotalBill(listOrder)
+                            }
+                        }
+
+                        override fun onAddFail() {
+                            runOnUiThread {
+                                Toast.makeText(this@CartActivity, "Có lỗi xảy ra", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }).show(supportFragmentManager, "")
+            }
+
             override fun onItemClick(order: Order) {
                 ProductDetailActivity.start(this@CartActivity, order.productId)
             }
@@ -94,7 +123,7 @@ class CartActivity : BaseActivity() {
     fun calculateTotalBill(listOrder: MutableList<Order>) {
         var total = 0
         listOrder.forEach {
-            total+= it.price
+            total+= it.price*it.quantity
         }
         mBinding.tvTotalBill.text = MoneyUtils.toVND(total)
         toggleSubmitBtn(listOrder)

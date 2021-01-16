@@ -6,7 +6,6 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -20,8 +19,9 @@ import com.scwang.smart.refresh.header.MaterialHeader
 class ShopDetailActivity : BaseActivity() {
     companion object{
         @JvmStatic
-        fun start(context: Context) {
+        fun start(context: Context, shopId: String) {
             val starter = Intent(context, ShopDetailActivity::class.java)
+                .putExtra("id", shopId)
             context.startActivity(starter)
         }
     }
@@ -34,14 +34,20 @@ class ShopDetailActivity : BaseActivity() {
     private var mListProduct = arrayListOf<ProductDetail>()
     private var mListFilter = mutableListOf<ProductDetail>()
     private lateinit var viewModel: ShopDetailViewModel
+    private var shopId: String = ""
     override fun initData() {
         viewModel = ViewModelProvider(this).get(ShopDetailViewModel::class.java)
-        viewModel.loadShopDetail("tiki-trading")
+        intent.extras?.let {
+            it.getString("id")?.let {str ->
+                shopId = str
+            }
+        }
+        viewModel.loadShopDetail(shopId)
         observableData()
     }
 
     override fun observableData() {
-        viewModel.mListProduct.observe(this, Observer {
+        viewModel.mListProduct.observe(this, {
             mListProduct.clear()
             mListProduct.addAll(it)
             mAdapter.updateData(it)
@@ -57,7 +63,7 @@ class ShopDetailActivity : BaseActivity() {
     }
 
     override fun onRefreshing() {
-        viewModel.loadShopDetail("tiki-trading")
+        viewModel.loadShopDetail(shopId)
     }
 
     override fun configViews() {

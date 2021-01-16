@@ -99,18 +99,9 @@
             android:textSize="@dimen/sp_15" />
     </LinearLayout>
 
-    <com.example.tipee.widget.CounterView
-        android:layout_marginTop="@dimen/d_5"
-        android:layout_marginHorizontal="@dimen/d_13"
-        android:layout_toEndOf="@id/ivThumbnail"
-        android:id="@+id/counterView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/llPrice" />
-
     <View
         android:layout_marginTop="@dimen/d_13"
-        android:layout_below="@id/counterView"
+        android:layout_below="@id/llPrice"
         android:layout_width="match_parent"
         android:layout_height="@dimen/d_1"
         android:background="@color/gray_DADADA" />

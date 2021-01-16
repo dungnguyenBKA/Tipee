@@ -9,18 +9,17 @@ import com.example.tipee.base.BaseBottomSheet
 import com.example.tipee.database.AppDatabase
 import com.example.tipee.database.entity.Order
 import com.example.tipee.databinding.PopupAddToCartBinding
-import com.example.tipee.model.ProductDetail
 import com.example.tipee.utils.MoneyUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AddToCartBottomSheet(
-    var productDetail: ProductDetail,
+    var order: Order,
     var listener: OnAddCartListener
 ) : BaseBottomSheet() {
     interface OnAddCartListener {
-        fun onAddCartSuccess()
+        fun onAddCartSuccess(order: Order)
         fun onAddFail()
     }
 
@@ -38,25 +37,18 @@ class AddToCartBottomSheet(
             AppDatabase::class.java,
             "Tipee"
         ).build()
-        mBinding.counter.bindDataCounter(max = 20, min = 1)
+        mBinding.counter.bindDataCounter(order.quantity,20, 1)
     }
 
     override fun configViews() {
-        val unitPrice = 100000
-        mBinding.tvBill.text = MoneyUtils.toVND(unitPrice)
+        mBinding.tvBill.text = MoneyUtils.toVND(order.quantity*order.price)
         mBinding.counter.curVal.observe(this, Observer {
-            mBinding.tvBill.text = MoneyUtils.toVND(it * unitPrice)
+            mBinding.tvBill.text = MoneyUtils.toVND(it * order.price)
+            order.quantity = it
         })
         mBinding.btnSubmitAdd.setOnClickListener {
             addCart(
-                Order(
-                    productId = productDetail.id,
-                    productName = productDetail.name,
-                    quantity = mBinding.counter.getCurrent(),
-                    thumbnailUrl = productDetail.thumbnail_url,
-                    price = 100000,
-                    listPrice = 200000
-                )
+                order
             )
             dismiss()
         }
@@ -66,7 +58,7 @@ class AddToCartBottomSheet(
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 db.orderDao().insertOrder(order)
-                listener.onAddCartSuccess()
+                listener.onAddCartSuccess(order)
             } catch (e: Exception) {
                 e.printStackTrace()
                 listener.onAddFail()

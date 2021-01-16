@@ -6,11 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tipee.database.entity.Order
 import com.example.tipee.databinding.ItemCartBinding
 import com.example.tipee.utils.LoadImage
+import com.example.tipee.utils.MoneyUtils
 
 class CartAdapter(var listOrder: List<Order>, private var listener: OnCartItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     interface OnCartItemClickListener{
         fun onItemClick(order: Order)
         fun onItemDelete(position: Int)
+        fun onEditItem(order: Order)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return CartViewHolder(
@@ -32,14 +34,18 @@ class CartAdapter(var listOrder: List<Order>, private var listener: OnCartItemCl
             b.ivThumbnail.setOnClickListener {
                 listener.onItemClick(order)
             }
-            b.counterView.bindDataCounter(max = 5, min = 1)
+
+            b.root.setOnClickListener {
+                listener.onEditItem(order)
+            }
+
             b.ivDelete.setOnClickListener {
                 listener.onItemDelete(adapterPosition)
             }
             b.tvProductName.text = order.productName
             b.tvOrderId.text = order.orderId
-            b.tvPrice.text = order.price.toString()
-            b.tvListPrice.text = order.listPrice.toString()
+            b.tvPrice.text = MoneyUtils.toVND(order.price*order.quantity)
+            b.tvListPrice.text = MoneyUtils.toVND(order.listPrice*order.quantity)
             LoadImage.loadImage(order.thumbnailUrl, b.ivThumbnail)
         }
     }
