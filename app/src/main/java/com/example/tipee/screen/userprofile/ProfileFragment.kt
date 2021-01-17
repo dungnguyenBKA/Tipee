@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.tipee.base.BaseFragment
 import com.example.tipee.databinding.FragmentUserProfileBinding
+import com.example.tipee.screen.favourite.FavouriteActivity
 import com.example.tipee.screen.login.LoginActivity
 import com.example.tipee.utils.LoginUtils
 
@@ -26,6 +27,17 @@ class ProfileFragment: BaseFragment() {
                 LoginActivity.start(requireContext())
                 Toast.makeText(requireContext(), "Vui lòng đăng nhập để tiếp tục", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        mBinding.llFavoriteProduct.setOnClickListener {
+//            if(!LoginUtils.isLoginWithRequest()){
+//                LoginActivity.start(requireContext())
+//                Toast.makeText(requireContext(), "Vui lòng đăng nhập để tiếp tục", Toast.LENGTH_SHORT).show()
+//            } else {
+//                FavouriteActivity.start(requireContext())
+//            }
+
+            FavouriteActivity.start(requireContext())
         }
     }
 }

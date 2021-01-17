@@ -45,7 +45,7 @@ class CartAdapter(var listOrder: List<Order>, private var listener: OnCartItemCl
             b.tvProductName.text = order.productName
             b.tvOrderId.text = order.orderId
             b.tvPrice.text = MoneyUtils.toVND(order.price*order.quantity)
-            b.tvListPrice.text = MoneyUtils.toVND(order.listPrice*order.quantity)
+            MoneyUtils.setTextDiscount(order.listPrice*order.quantity, b.tvListPrice)
             LoadImage.loadImage(order.thumbnailUrl, b.ivThumbnail)
         }
     }

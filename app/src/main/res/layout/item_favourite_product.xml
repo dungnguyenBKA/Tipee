@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/d_13"
+    android:layout_marginTop="@dimen/d_10">
+
+    <ImageView
+        android:id="@+id/ivThumbnail"
+        android:layout_width="@dimen/d_80"
+        android:layout_height="@dimen/d_80"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/item_placeholder" />
+
+    <TextView
+        android:layout_toStartOf="@id/ivDelete"
+        android:id="@+id/tvProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/d_13"
+        android:layout_toEndOf="@id/ivThumbnail"
+        android:fontFamily="@font/nunito_sans_semibold"
+        android:textColor="@color/gray_333333"
+        android:textSize="@dimen/sp_15"
+        tools:text="Điện Thoại iPhone 12 Pro Max (6GB/256GB) - Hàng Chính Hãng" />
+
+
+    <ImageView
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/ivDelete"
+        android:layout_width="@dimen/d_30"
+        android:layout_height="@dimen/d_30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_clear_24" />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/d_5"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="@dimen/d_13"
+        android:id="@+id/llPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvProductName"
+        android:layout_toEndOf="@id/ivThumbnail">
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:text="69.000 đ"
+            android:textColor="@color/red_ff3945"
+            android:textSize="@dimen/sp_17" />
+
+        <TextView
+            android:layout_marginStart="@dimen/d_10"
+            android:id="@+id/tvListPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:text="69.000 đ"
+            android:textColor="@color/gray_02"
+            android:textSize="@dimen/sp_15" />
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="@dimen/d_13"
+        android:layout_below="@id/llPrice"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_1"
+        android:background="@color/gray_DADADA" />
+
+</RelativeLayout>

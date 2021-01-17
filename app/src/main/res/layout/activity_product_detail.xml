@@ -8,11 +8,11 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
-        android:background="@color/white"
         android:layout_width="match_parent"
-        app:liftOnScroll="true"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        app:liftOnScroll="true">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
@@ -21,34 +21,34 @@
             app:layout_scrollFlags="enterAlways|snap">
 
             <RelativeLayout
-                android:layout_marginEnd="@dimen/d_13"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/d_30">
+                android:layout_height="@dimen/d_30"
+                android:layout_marginEnd="@dimen/d_13">
 
                 <ImageView
-                    android:adjustViewBounds="true"
-                    android:layout_alignParentStart="true"
                     android:id="@+id/ivBack"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:adjustViewBounds="true"
                     app:srcCompat="@drawable/ic_round_arrow_back_24" />
 
                 <ImageView
                     android:id="@+id/ivLike"
-                    app:srcCompat="@drawable/ic_baseline_favorite_border_24"
-                    android:adjustViewBounds="true"
-                    android:layout_toStartOf="@id/ivShare"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:layout_toStartOf="@id/ivShare"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
 
                 <ImageView
-                    android:layout_marginStart="@dimen/d_5"
-                    app:srcCompat="@drawable/ic_baseline_share_24"
                     android:id="@+id/ivShare"
-                    android:adjustViewBounds="true"
-                    android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/d_5"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/ic_baseline_share_24" />
             </RelativeLayout>
 
         </com.google.android.material.appbar.MaterialToolbar>
@@ -77,9 +77,9 @@
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_image" />
-
-
+                
                 <TextView
+                    android:layout_marginTop="@dimen/d_5"
                     android:id="@+id/tvProductName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -98,15 +98,34 @@
                     android:rating="4.5"
                     android:stepSize="0.5" />
 
-                <TextView
-                    android:id="@+id/tvPrice"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito_sans_bold"
-                    android:paddingHorizontal="@dimen/d_13"
-                    android:text="xxx.000 đ"
-                    android:textColor="@color/gray_333333"
-                    android:textSize="@dimen/sp_20" />
+                    android:layout_marginVertical="@dimen/d_5"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/d_13">
+
+                    <TextView
+                        android:id="@+id/tvPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:text="xxx.000 đ"
+                        android:textColor="@color/gray_333333"
+                        android:textSize="@dimen/sp_20" />
+
+                    <TextView
+                        android:id="@+id/tvListPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/d_13"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:text="xxx.000 đ"
+                        android:textColor="@color/gray_8A8A8F"
+                        android:textSize="@dimen/sp_17" />
+
+                </LinearLayout>
 
                 <include layout="@layout/space_3dp" />
 
@@ -122,6 +141,7 @@
 
                 <com.example.tipee.widget.ShopView
                     android:id="@+id/shopView"
+                    android:layout_marginVertical="@dimen/d_5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="@dimen/d_13" />
@@ -140,6 +160,7 @@
                         android:fontFamily="@font/nunito_sans_semibold"
                         android:paddingHorizontal="@dimen/d_13"
                         android:text="Mô tả sản phẩm"
+                        android:layout_marginVertical="@dimen/d_5"
                         android:textColor="@color/gray_333333"
                         android:textSize="@dimen/sp_17" />
 
@@ -148,14 +169,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/text1"
+                        android:layout_marginBottom="@dimen/d_5"
                         android:paddingHorizontal="@dimen/d_13" />
 
                     <ImageView
+                        android:layout_marginHorizontal="@dimen/d_13"
                         android:id="@+id/ivBlurProduct"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/d_200"
-                        android:layout_below="@id/tvShortDescription"
-                        android:adjustViewBounds="true" />
+                        android:scaleType="centerCrop"
+                        android:layout_below="@id/tvShortDescription"/>
+
+                    <ImageView
+                        android:layout_marginHorizontal="@dimen/d_13"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/d_200"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/blur"
+                        android:layout_below="@id/tvShortDescription"/>
 
                     <RelativeLayout
                         android:id="@+id/viewMore"

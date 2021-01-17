@@ -1,22 +1,24 @@
-package com.example.tipee.screen.homepage.adapter
+package com.example.tipee.screen.favourite
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tipee.databinding.ItemCategory1Binding
+import com.example.tipee.databinding.ItemFavouriteProductBinding
 import com.example.tipee.model.ProductDetail
+import com.example.tipee.utils.LoadImage
 import com.example.tipee.utils.MoneyUtils
 
-class Category1Adapter(var listProduct: List<ProductDetail>, var listener: OnViewClickListener) :
+class Category2Adapter(var listProduct: List<ProductDetail>, var listener: OnViewClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     interface OnViewClickListener {
         fun onItemProductClick(productDetail: ProductDetail)
+        fun onItemDelete(productDetail: ProductDetail, adapterPosition: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ItemCategory1ViewHolder(
-            ItemCategory1Binding.inflate(LayoutInflater.from(parent.context), parent, false),
+            ItemFavouriteProductBinding.inflate(LayoutInflater.from(parent.context), parent, false),
             listener
         )
     }
@@ -31,14 +33,18 @@ class Category1Adapter(var listProduct: List<ProductDetail>, var listener: OnVie
         return listProduct.size
     }
 
-    class ItemCategory1ViewHolder(var b: ItemCategory1Binding, var listener: OnViewClickListener) :
+    class ItemCategory1ViewHolder(var b: ItemFavouriteProductBinding, var listener: OnViewClickListener) :
         RecyclerView.ViewHolder(b.root) {
         fun bind(productDetail: ProductDetail) {
             b.root.setOnClickListener {
                 listener.onItemProductClick(productDetail)
             }
 
-            b.tvDiscount.apply {
+            b.ivDelete.setOnClickListener {
+                listener.onItemDelete(productDetail, adapterPosition)
+            }
+
+            b.tvListPrice.apply {
                 visibility = if (productDetail.price < productDetail.list_price) {
                     View.VISIBLE
                 } else {
@@ -47,9 +53,11 @@ class Category1Adapter(var listProduct: List<ProductDetail>, var listener: OnVie
                 text = MoneyUtils.disCountUtils(productDetail.price, productDetail.list_price)
             }
 
+            LoadImage.loadImage(productDetail.thumbnail_url, b.ivThumbnail)
+
             b.tvPrice.text = MoneyUtils.toVND(productDetail.price)
 
-            b.tvItemName.text = productDetail.name
+            b.tvProductName.text = productDetail.name
         }
     }
 }

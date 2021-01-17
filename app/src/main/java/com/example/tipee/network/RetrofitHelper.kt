@@ -35,7 +35,6 @@ class RetrofitHelper {
                 .readTimeout(60, TimeUnit.SECONDS)
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .build()
-            client.connectTimeoutMillis
             if(retrofitTipee == null){
                 retrofitTipee = Retrofit.Builder()
                     .baseUrl(TIPEE_BASE_URL)
