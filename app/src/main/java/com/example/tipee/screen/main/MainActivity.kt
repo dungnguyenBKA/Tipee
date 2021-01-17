@@ -2,14 +2,11 @@ package com.example.tipee.screen.main
 
 import android.view.View
 import android.widget.Toast
-import androidx.core.view.ViewCompat
 import com.example.tipee.R
 import com.example.tipee.base.BaseActivity
 import com.example.tipee.databinding.ActivityMainBinding
 import com.example.tipee.screen.homepage.HomePageFragment
-import com.example.tipee.screen.test.banner.TestBannerActivity
 import com.example.tipee.screen.userprofile.ProfileFragment
-import com.example.tipee.utils.*
 import java.util.*
 
 class MainActivity : BaseActivity() {

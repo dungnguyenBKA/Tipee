@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tipee.databinding.Category1Binding
+import com.example.tipee.model.ProductDetail
+import com.example.tipee.model.response.HomepageItem
 import com.example.tipee.screen.productdetail.ProductDetailActivity
 
-class HomepageAdapter(var listener: OnViewClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomepageAdapter(var homepageData: ArrayList<HomepageItem>, var listener: OnViewClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     interface OnViewClickListener{
-        fun onTitleClick()
+        fun onTitleClick(idCategory: String)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType){
@@ -30,12 +32,12 @@ class HomepageAdapter(var listener: OnViewClickListener) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(holder is Category1ViewHolder){
-            holder.bind()
+            holder.bind(homepageData[position])
         }
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return homepageData.size
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -43,15 +45,17 @@ class HomepageAdapter(var listener: OnViewClickListener) : RecyclerView.Adapter<
     }
 
     class Category1ViewHolder(var b: Category1Binding, var listener: OnViewClickListener) : RecyclerView.ViewHolder(b.root){
-        fun bind(){
+        fun bind(homepageItem: HomepageItem){
+
+            b.tvCategoryName.text = homepageItem.name
+
             b.rlTitle.setOnClickListener {
-                listener.onTitleClick()
+                listener.onTitleClick(homepageItem.id_category)
             }
 
-            b.rvCate1.adapter = Category1Adapter(object : Category1Adapter.OnViewClickListener {
-                override fun onViewClick() {
-                    // TODO: 12/27/2020 change id
-                    ProductDetailActivity.start(b.root.context, "74810915")
+            b.rvCate1.adapter = Category1Adapter(homepageItem.product, object : Category1Adapter.OnViewClickListener {
+                override fun onItemProductClick(productDetail: ProductDetail) {
+                    ProductDetailActivity.start(b.root.context, productDetail.id)
                 }
             })
         }

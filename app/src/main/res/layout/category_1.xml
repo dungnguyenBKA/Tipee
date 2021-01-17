@@ -13,6 +13,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/tvCategoryName"
             android:layout_centerVertical="true"
             android:text="Tên Category"
             android:textSize="@dimen/sp_20"
@@ -23,11 +24,12 @@
             android:layout_height="wrap_content"/>
 
         <ImageView
+            android:id="@+id/ivShowMore"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            app:srcCompat="@drawable/ic_baseline_check_circle_outline_24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
+            android:layout_width="@dimen/d_30"
+            android:layout_height="@dimen/d_30"/>
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView

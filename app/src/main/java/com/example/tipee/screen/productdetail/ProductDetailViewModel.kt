@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class ProductDetailViewModel : BaseViewModel() {
-    private val api = RetrofitHelper.getInstance()
+    private val api = RetrofitHelper.getTikiInstance()
     val mProductDetail = MutableLiveData<ProductDetail>()
 
     fun loadProductDetail(id: String){
