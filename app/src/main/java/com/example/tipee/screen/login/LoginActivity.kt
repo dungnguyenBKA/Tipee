@@ -27,6 +27,7 @@ class LoginActivity : BaseActivity() {
     override fun configViews() {
         mBinding.viewPager.apply {
             offscreenPageLimit = 2
+            isUserInputEnabled = false
             adapter = LoginPagerAdapter(this@LoginActivity)
         }
         TabLayoutMediator(mBinding.tabLayout, mBinding.viewPager

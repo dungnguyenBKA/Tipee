@@ -15,6 +15,7 @@ import com.example.tipee.base.BaseActivity
 import com.example.tipee.database.AppDatabase
 import com.example.tipee.database.entity.Order
 import com.example.tipee.databinding.ActivityProductDetailBinding
+import com.example.tipee.model.Comment
 import com.example.tipee.model.ProductDetail
 import com.example.tipee.screen.cart.CartActivity
 import com.example.tipee.screen.main.PlaceHolderActivity
@@ -100,6 +101,12 @@ class ProductDetailActivity : BaseActivity() {
                 PlaceHolderActivity.start(this@ProductDetailActivity)
             }
         })
+
+        val listComment = arrayListOf<Comment>()
+        listComment.add(Comment("", "Nguyễn Minh Dũng", "Nguyễn Minh Dũng", "San pham dung ok nhung hoi chan", 3.toFloat(), "https://images-na.ssl-images-amazon.com/images/I/81OL41BLJlL._SL1500_.jpg"))
+        listComment.addAll(listComment)
+        listComment.addAll(listComment)
+        mBinding.commentBox.bindComment(listComment)
 
         mBinding.rvImageDetail.apply {
             adapter = imageAdapter

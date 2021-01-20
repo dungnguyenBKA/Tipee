@@ -77,12 +77,12 @@
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_image" />
-                
+
                 <TextView
-                    android:layout_marginTop="@dimen/d_5"
                     android:id="@+id/tvProductName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d_5"
                     android:fontFamily="@font/nunito_sans"
                     android:paddingHorizontal="@dimen/d_13"
                     android:text="Product name"
@@ -141,9 +141,9 @@
 
                 <com.example.tipee.widget.ShopView
                     android:id="@+id/shopView"
-                    android:layout_marginVertical="@dimen/d_5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/d_5"
                     android:paddingHorizontal="@dimen/d_13" />
 
                 <include layout="@layout/space_3dp" />
@@ -157,10 +157,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
+                        android:layout_marginVertical="@dimen/d_5"
                         android:fontFamily="@font/nunito_sans_semibold"
                         android:paddingHorizontal="@dimen/d_13"
                         android:text="Mô tả sản phẩm"
-                        android:layout_marginVertical="@dimen/d_5"
                         android:textColor="@color/gray_333333"
                         android:textSize="@dimen/sp_17" />
 
@@ -173,20 +173,20 @@
                         android:paddingHorizontal="@dimen/d_13" />
 
                     <ImageView
-                        android:layout_marginHorizontal="@dimen/d_13"
                         android:id="@+id/ivBlurProduct"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/d_200"
-                        android:scaleType="centerCrop"
-                        android:layout_below="@id/tvShortDescription"/>
+                        android:layout_below="@id/tvShortDescription"
+                        android:layout_marginHorizontal="@dimen/d_13"
+                        android:scaleType="centerCrop" />
 
                     <ImageView
-                        android:layout_marginHorizontal="@dimen/d_13"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/d_200"
+                        android:layout_below="@id/tvShortDescription"
+                        android:layout_marginHorizontal="@dimen/d_13"
                         android:scaleType="fitXY"
-                        android:src="@drawable/blur"
-                        android:layout_below="@id/tvShortDescription"/>
+                        android:src="@drawable/blur" />
 
                     <RelativeLayout
                         android:id="@+id/viewMore"
@@ -208,11 +208,15 @@
                             app:drawableEndCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
                     </RelativeLayout>
 
-
                 </RelativeLayout>
 
-
                 <include layout="@layout/space_3dp" />
+
+                <com.example.tipee.widget.commentbox.CommentBox
+                    android:id="@+id/commentBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/d_13" />
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

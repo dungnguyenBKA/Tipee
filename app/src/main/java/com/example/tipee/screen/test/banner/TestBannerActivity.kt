@@ -25,7 +25,7 @@ class TestBannerActivity : BaseActivity() {
     }
 
     override fun configViews() {
-        val data = arrayListOf("1", "2", "", "")
-        mBinding.bannerView.loadDataBanner(data)
+//        val data = arrayListOf("1", "2", "", "")
+//        mBinding.bannerView.loadDataBanner(data)
     }
 }

@@ -27,6 +27,15 @@
         <item name="android:thumb">@null</item>
     </style>
 
+    <style name="CustomRatingBarMedium2" parent="android:Widget.RatingBar">
+        <item name="android:minHeight">@dimen/d_30</item>
+        <item name="android:maxHeight">@dimen/d_30</item>
+        <item name="android:progressDrawable">@drawable/abc_ratingbar_small_material</item>
+        <item name="android:indeterminateDrawable">@drawable/abc_ratingbar_small_material</item>
+        <item name="android:isIndicator">false</item>
+        <item name="android:thumb">@null</item>
+    </style>
+
     <style name="ThemeOverlay.App.Button" parent="">
         <item name="colorPrimary">@color/red_ff3945</item>
         <item name="colorOnPrimary">@color/red_ff3945</item>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:layout_marginVertical="@dimen/d_5"
+        android:layout_marginStart="@dimen/d_68"
+        android:layout_marginEnd="@dimen/d_13"
+        android:background="@color/gray_DADADA"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_1"/>
+
+    <LinearLayout
+        android:id="@+id/llParentComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="@dimen/d_60"
+            android:layout_height="@dimen/d_60"
+            android:padding="@dimen/d_8"
+            android:src="@drawable/avatar_placeholder" />
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/d_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d_13"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvParentUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:fontFamily="@font/nunito_sans_semibold"
+                android:maxLines="1"
+                android:text="Nguyen Minh Dung"
+                android:textColor="@color/gray_333333"
+                android:textSize="@dimen/sp_13" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:layout_marginTop="@dimen/d_5"
+                android:id="@+id/ratingBar"
+                style="@style/CustomRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:rating="4"
+                android:stepSize="1" />
+
+            <TextView
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/gray_8A8A8F"
+                android:fontFamily="@font/nunito_sans"
+                android:id="@+id/tvParentComment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/d_5"
+                android:maxLines="3"
+                android:layout_marginBottom="@dimen/d_10"
+                android:text="Hay quá bạn ơi\nHay quá bạn ơi\nHay quá bạn ơi\nHay quá bạn ơi\n" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

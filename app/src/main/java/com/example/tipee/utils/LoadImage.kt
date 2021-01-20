@@ -9,6 +9,9 @@ import com.example.tipee.R
 class LoadImage {
     companion object {
         fun loadImage(url: String, iv: ImageView) {
+            if(url.trim().isEmpty()){
+                return
+            }
             Glide.with(iv.context)
                 .load(url)
                 .placeholder(R.drawable.item_placeholder)
@@ -16,6 +19,9 @@ class LoadImage {
         }
 
         fun loadImage(url: String, iv: ImageView, corner: Int) {
+            if(url.trim().isEmpty()){
+                return
+            }
             Glide.with(iv.context)
                 .load(url)
                 .placeholder(R.drawable.item_placeholder)
