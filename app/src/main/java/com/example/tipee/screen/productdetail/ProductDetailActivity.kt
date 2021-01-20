@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -21,11 +22,11 @@ import com.example.tipee.screen.cart.CartActivity
 import com.example.tipee.screen.main.PlaceHolderActivity
 import com.example.tipee.screen.productdetail.adapter.ImageAdapter
 import com.example.tipee.screen.shopdetail.ShopDetailActivity
-import com.example.tipee.utils.LoadImage
-import com.example.tipee.utils.MoneyUtils
+import com.example.tipee.utils.*
 import com.example.tipee.utils.event.DeleteCartEvent
 import com.example.tipee.widget.HtmlActivity
 import com.example.tipee.widget.ShopView
+import com.example.tipee.widget.commentbox.CommentBox
 import com.example.tipee.widget.popup.AddToCartBottomSheet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -103,10 +104,46 @@ class ProductDetailActivity : BaseActivity() {
         })
 
         val listComment = arrayListOf<Comment>()
-        listComment.add(Comment("", "Nguyễn Minh Dũng", "Nguyễn Minh Dũng", "San pham dung ok nhung hoi chan", 3.toFloat(), "https://images-na.ssl-images-amazon.com/images/I/81OL41BLJlL._SL1500_.jpg"))
+        listComment.add(
+            Comment(
+                "",
+                "Nguyễn Minh Dũng",
+                "Nguyễn Minh Dũng",
+                "San pham dung ok nhung hoi chan",
+                3.toFloat(),
+                "https://images-na.ssl-images-amazon.com/images/I/81OL41BLJlL._SL1500_.jpg"
+            )
+        )
         listComment.addAll(listComment)
         listComment.addAll(listComment)
-        mBinding.commentBox.bindComment(listComment)
+
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        val softKeyboard = SoftKeyboard(mBinding.root, imm)
+        softKeyboard.setSoftKeyboardCallback(object : SoftKeyboard.SoftKeyboardChanged{
+            override fun onSoftKeyboardHide() {
+                runOnUiThread{
+                    mBinding.rlBuyBox.show()
+                    mBinding.rlAddComment.hide()
+                }
+            }
+
+            override fun onSoftKeyboardShow() {
+                runOnUiThread{
+                    mBinding.rlBuyBox.hide()
+                    mBinding.rlAddComment.show()
+                }
+            }
+        })
+
+        mBinding.commentBox.apply {
+            bindComment(listComment)
+            listener = object : CommentBox.OnAddNewCommentListener{
+                override fun onAddNewCommentListener() {
+                    mBinding.edtComment.requestFocus()
+                    imm.showSoftInput(mBinding.edtComment, InputMethodManager.SHOW_IMPLICIT)
+                }
+            }
+        }
 
         mBinding.rvImageDetail.apply {
             adapter = imageAdapter

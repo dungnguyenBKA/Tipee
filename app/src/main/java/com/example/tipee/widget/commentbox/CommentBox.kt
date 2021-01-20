@@ -8,6 +8,10 @@ import com.example.tipee.databinding.LayoutCommentBoxBinding
 import com.example.tipee.model.Comment
 
 class CommentBox : LinearLayout {
+    interface OnAddNewCommentListener{
+        fun onAddNewCommentListener()
+    }
+    var listener : OnAddNewCommentListener? = null
     private lateinit var mBinding: LayoutCommentBoxBinding
 
     constructor(context: Context): super(context){
@@ -39,7 +43,7 @@ class CommentBox : LinearLayout {
         })
 
         mBinding.tvAddComment.setOnClickListener {
-
+            listener?.onAddNewCommentListener()
         }
 
         mBinding.rvTotalComment.apply {
