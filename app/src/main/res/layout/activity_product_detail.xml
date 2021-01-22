@@ -222,47 +222,71 @@
         </androidx.core.widget.NestedScrollView>
 
         <FrameLayout
-            android:layout_alignParentBottom="true"
             android:id="@+id/flBottom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
 
-            <RelativeLayout
-                android:layout_marginVertical="@dimen/d_5"
-                android:background="@color/white"
-                android:visibility="gone"
+            <LinearLayout
                 android:id="@+id/rlAddComment"
-                android:layout_marginHorizontal="@dimen/d_13"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
 
-                <EditText
-                    android:layout_centerVertical="true"
-                    android:id="@+id/edtComment"
-                    android:textSize="@dimen/sp_15"
-                    android:hint="Nhập bình luận..."
+                <include
+                    android:id="@+id/space"
+                    layout="@layout/space_1dp" />
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/ratingBar"
+                    style="@style/Widget.AppCompat.RatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:numStars="5" />
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_toStartOf="@id/btnUploadImage"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_marginEnd="@dimen/d_10"
-                    android:src="@drawable/ic_baseline_attach_file_24"
-                    android:layout_centerVertical="true"
-                    android:layout_toStartOf="@id/btnSend"
-                    android:id="@+id/btnUploadImage"
-                    android:layout_width="@dimen/d_30"
-                    android:layout_height="@dimen/d_30"/>
 
-                <ImageView
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_baseline_send_24"
-                    android:layout_alignParentEnd="true"
-                    android:id="@+id/btnSend"
-                    android:layout_width="@dimen/d_30"
-                    android:layout_height="@dimen/d_30"/>
+                    <EditText
+                        android:id="@+id/edtComment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/space"
+                        android:layout_marginHorizontal="@dimen/d_13"
+                        android:layout_toStartOf="@id/btnUploadImage"
+                        android:hint="Nhập bình luận..."
+                        android:textSize="@dimen/sp_15" />
 
-            </RelativeLayout>
+                    <ImageView
+                        android:id="@+id/btnUploadImage"
+                        android:layout_width="@dimen/d_30"
+                        android:layout_height="@dimen/d_30"
+                        android:layout_below="@id/space"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/d_10"
+                        android:layout_toStartOf="@id/btnSend"
+                        android:src="@drawable/ic_baseline_attach_file_24"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/btnSend"
+                        android:layout_width="@dimen/d_30"
+                        android:layout_height="@dimen/d_30"
+                        android:layout_below="@id/space"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_baseline_send_24" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/rlBuyBox"
@@ -272,7 +296,8 @@
                 android:background="@color/white"
                 android:orientation="horizontal"
                 android:paddingHorizontal="@dimen/d_13"
-                android:paddingVertical="@dimen/d_8">
+                android:paddingVertical="@dimen/d_8"
+                tools:visibility="gone">
 
                 <ImageView
                     android:id="@+id/ivCart"

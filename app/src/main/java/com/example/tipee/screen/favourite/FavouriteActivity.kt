@@ -40,7 +40,7 @@ class FavouriteActivity : BaseActivity() {
 
         mAdapter = Category2Adapter(listProduct, object : Category2Adapter.OnViewClickListener{
             override fun onItemProductClick(productDetail: ProductDetail) {
-                ProductDetailActivity.start(this@FavouriteActivity, productDetail.id)
+                ProductDetailActivity.start(this@FavouriteActivity, productDetail.id, true)
             }
 
             override fun onItemDelete(productDetail: ProductDetail, adapterPosition: Int) {

@@ -33,4 +33,8 @@ class SharedPreferencesUtils private constructor(){
         editor?.putInt(fieldName, value)
         editor?.apply()
     }
+
+    fun getInt(fieldName: String): Int{
+        return pre?.getInt(fieldName, 0) ?: 0
+    }
 }

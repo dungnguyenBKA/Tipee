@@ -10,6 +10,14 @@ class MoneyUtils {
             return "${NumberFormat.getInstance().format(value)} đ"
         }
 
+        fun toInt(vnd: String): Int{
+            val number = vnd.replace("[^0-9]".toRegex(), "")
+            if(number.trim().isEmpty()){
+                return 0
+            }
+            return Integer.parseInt(number)
+        }
+
         fun setTextDiscount(value: Int, textView: TextView){
             textView.apply {
                 text = toVND(value)

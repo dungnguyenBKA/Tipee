@@ -6,6 +6,12 @@ import androidx.room.Entity
 data class ProductDetail(
     var id: String,
     var name: String,
+    var url_path: String,
+    var productset_group_name: String,
+    var min_qty: Int,
+    var max_qty: Int,
+    var quantity: Int,
+    var category: String,
     var short_description: String,
     var description: String,
     var thumbnail_url: String,

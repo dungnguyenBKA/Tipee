@@ -14,6 +14,7 @@ import com.example.tipee.databinding.FragmentSignUpBinding
 import com.example.tipee.model.UserDetail
 import com.example.tipee.screen.main.UploadImageViewModel
 import com.example.tipee.utils.LoadImage
+import com.example.tipee.utils.LoginUtils
 import com.example.tipee.utils.convertImageToBase64
 import com.example.tipee.utils.setEnableView
 import com.google.android.material.textfield.TextInputLayout
@@ -77,7 +78,8 @@ class SignUpFragment : BaseFragment() {
                 urlAvatar
             )
 
-            mViewModel.uploadUser(userDetail)
+            LoginUtils.login(userDetail)
+            //mViewModel.uploadUser(userDetail)
         }
 
         mBinding.btnPickAvatar.setOnClickListener {

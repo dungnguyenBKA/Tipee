@@ -11,8 +11,11 @@ import com.example.tipee.base.BaseActivity
 import com.example.tipee.database.AppDatabase
 import com.example.tipee.database.entity.Order
 import com.example.tipee.databinding.ActivityCartBinding
+import com.example.tipee.screen.login.LoginActivity
 import com.example.tipee.screen.productdetail.ProductDetailActivity
+import com.example.tipee.utils.LoginUtils
 import com.example.tipee.utils.MoneyUtils
+import com.example.tipee.utils.event.BuyEvent
 import com.example.tipee.utils.event.DeleteCartEvent
 import com.example.tipee.utils.setEnableView
 import com.example.tipee.widget.popup.AddToCartBottomSheet
@@ -43,7 +46,7 @@ class CartActivity : BaseActivity() {
             applicationContext,
             AppDatabase::class.java,
             "Tipee"
-        ).build()
+        ).allowMainThreadQueries().build()
     }
 
     override fun configViews() {
@@ -76,7 +79,7 @@ class CartActivity : BaseActivity() {
             }
 
             override fun onItemClick(order: Order) {
-                ProductDetailActivity.start(this@CartActivity, order.productId)
+                ProductDetailActivity.start(this@CartActivity, order.productId, true)
             }
 
             override fun onItemDelete(position: Int) {
@@ -117,7 +120,25 @@ class CartActivity : BaseActivity() {
             onBackPressed()
         }
 
-
+        mBinding.btnSubmit.setOnClickListener {
+            if(!LoginUtils.isLogin()) {
+                LoginActivity.start(this)
+            } else {
+                if(LoginUtils.getUserBalance() < MoneyUtils.toInt(mBinding.tvTotalBill.text.toString())){
+                    Toast.makeText(this, "Bạn không có đủ số dư", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Thanh toán thành công!!", Toast.LENGTH_SHORT).show()
+                    LoginUtils.setUserBalance(LoginUtils.getUserBalance() - MoneyUtils.toInt(mBinding.tvTotalBill.text.toString()))
+                    CoroutineScope(Dispatchers.IO).launch {
+                        db.orderDao().nukeTable()
+                    }
+                    EventBus.getDefault().post(BuyEvent())
+                    runOnUiThread{
+                        finish()
+                    }
+                }
+            }
+        }
     }
 
     fun calculateTotalBill(listOrder: MutableList<Order>) {

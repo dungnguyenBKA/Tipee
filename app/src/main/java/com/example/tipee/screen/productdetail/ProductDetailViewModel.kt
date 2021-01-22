@@ -8,12 +8,32 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class ProductDetailViewModel : BaseViewModel() {
-    private val api = RetrofitHelper.getTikiInstance()
+    private val api = RetrofitHelper.getInstance()
+    private val apiTiki = RetrofitHelper.getTikiInstance()
     val mProductDetail = MutableLiveData<ProductDetail>()
 
-    fun loadProductDetail(id: String){
+    fun load(id: String, isFromTiki : Boolean = false){
+        if(isFromTiki) {
+            loadProductDetailTiki(id)
+        } else {
+            loadProductDetail(id)
+        }
+    }
+
+    private fun loadProductDetail(id: String){
         isLoading.value = true
-        api.getProductDetail(id)
+        api.getProductDetailTipee(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                mProductDetail.value = it
+                isLoading.value = false
+            }, onError)
+    }
+
+    private fun loadProductDetailTiki(id: String){
+        isLoading.value = true
+        apiTiki.getProductDetail(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

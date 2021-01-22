@@ -13,6 +13,7 @@ import com.example.tipee.base.BaseActivity
 import com.example.tipee.databinding.ActivityShopDetailBinding
 import com.example.tipee.model.ProductDetail
 import com.example.tipee.screen.productdetail.ProductDetailActivity
+import com.example.tipee.utils.LoadImage
 import com.example.tipee.utils.hideKeyboard
 import com.scwang.smart.refresh.header.MaterialHeader
 
@@ -67,6 +68,7 @@ class ShopDetailActivity : BaseActivity() {
     }
 
     override fun configViews() {
+        LoadImage.loadImage("https://theme.zdassets.com/theme_assets/509975/341ca621965b7814f0317d5f507249af65fe33e6.png", mBinding.header.ivShopLogo)
         mBinding.refreshLayout.setRefreshHeader(MaterialHeader(this))
         mBinding.refreshLayout.setOnRefreshListener {
             onRefreshing()
@@ -75,7 +77,7 @@ class ShopDetailActivity : BaseActivity() {
 
         mAdapter = ShopItemAdapter(object : ShopItemAdapter.OnViewClickListener{
             override fun onViewClick(productDetail: ProductDetail) {
-                ProductDetailActivity.start(this@ShopDetailActivity, productDetail.id)
+                ProductDetailActivity.start(this@ShopDetailActivity, productDetail.id, true)
             }
         })
 

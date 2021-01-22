@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import android.widget.Toast
 import com.example.tipee.databinding.ShopViewBinding
 import com.example.tipee.utils.LoadImage
 
@@ -42,8 +41,9 @@ class ShopView : LinearLayout {
 
     fun loadShopData(){
         //LoadImage.loadImage("", mBinding.ivShopLogo)
-        mBinding.tvShopName.text = "Shopeeee"
-        mBinding.rbShop.rating = 4.5f
+        LoadImage.loadImage("https://theme.zdassets.com/theme_assets/509975/341ca621965b7814f0317d5f507249af65fe33e6.png", mBinding.ivShopLogo)
+        mBinding.tvShopName.text = "Tipee Trading"
+        mBinding.rbShop.rating = 4f
         mBinding.tvTotalRating.text = "(Chưa có rating)"
         // TODO: 12/23/2020 add condition id
         mBinding.tvFollowShop.setOnClickListener {

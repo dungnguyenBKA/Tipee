@@ -12,6 +12,9 @@ interface TipeeApi {
     @GET("homepage")
     fun getHomepage() : Observable<List<HomepageItem>>
 
+    @GET("product/{productId}")
+    fun getProductDetailTipee(@Path("productId") id: String) : Observable<ProductDetail>
+
     // test from tiki
     @GET("products/{productId}")
     fun getProductDetail(@Path("productId") id: String) : Observable<ProductDetail>

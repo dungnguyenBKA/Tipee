@@ -20,4 +20,7 @@ interface OrderDao {
 
     @Query("select * from `order` where productId like :productId")
     suspend fun findOrderByProductId(productId: String): List<Order>
+
+    @Query("DELETE FROM `order`")
+    suspend fun nukeTable()
 }

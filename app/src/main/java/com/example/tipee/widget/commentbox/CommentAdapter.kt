@@ -18,9 +18,9 @@ class CommentAdapter(var listComment: List<Comment>, var listener: OnItemClickLi
                 listener.onItemClick(comment)
             }
 
-            LoadImage.loadImage(comment.user_avatar, b.ivAvatar)
+            LoadImage.loadImage(comment.userDetail.userAvatarUrl, b.ivAvatar)
             b.ratingBar.rating = comment.rating
-            b.tvParentUserName.text = comment.userRealName
+            b.tvParentUserName.text = comment.userDetail.userRealName
             b.tvParentComment.text = comment.comment
         }
     }

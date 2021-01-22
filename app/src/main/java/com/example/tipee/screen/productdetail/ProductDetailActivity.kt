@@ -18,6 +18,7 @@ import com.example.tipee.database.entity.Order
 import com.example.tipee.databinding.ActivityProductDetailBinding
 import com.example.tipee.model.Comment
 import com.example.tipee.model.ProductDetail
+import com.example.tipee.model.UserDetail
 import com.example.tipee.screen.cart.CartActivity
 import com.example.tipee.screen.main.PlaceHolderActivity
 import com.example.tipee.screen.productdetail.adapter.ImageAdapter
@@ -41,9 +42,10 @@ class ProductDetailActivity : BaseActivity() {
         const val ID = "id"
 
         @JvmStatic
-        fun start(context: Context, id: String) {
+        fun start(context: Context, id: String, isTiki: Boolean = false) {
             val starter = Intent(context, ProductDetailActivity::class.java)
                 .putExtra(ID, id)
+                .putExtra("isTiki", isTiki)
             context.startActivity(starter)
         }
     }
@@ -52,6 +54,7 @@ class ProductDetailActivity : BaseActivity() {
     private lateinit var viewModel: ProductDetailViewModel
     private lateinit var imageAdapter: ImageAdapter
     private var id: String = ""
+    private var isFromTIki = false
     private lateinit var db: AppDatabase
     private lateinit var productDetail: ProductDetail
     override fun getViewBinding(): View {
@@ -70,8 +73,12 @@ class ProductDetailActivity : BaseActivity() {
             it.getString(ID)?.let {
                 id = it
             }
+
+            it.getBoolean("isTiki")?.let{
+                isFromTIki = it
+            }
         }
-        viewModel.loadProductDetail(id)
+        viewModel.load(id, isFromTIki)
         CoroutineScope(IO).launch {
             try {
                 val product = db.productDao().findProductById(id)
@@ -106,16 +113,19 @@ class ProductDetailActivity : BaseActivity() {
         val listComment = arrayListOf<Comment>()
         listComment.add(
             Comment(
-                "",
-                "Nguyễn Minh Dũng",
-                "Nguyễn Minh Dũng",
-                "San pham dung ok nhung hoi chan",
-                3.toFloat(),
-                "https://images-na.ssl-images-amazon.com/images/I/81OL41BLJlL._SL1500_.jpg"
+                UserDetail(
+                    "",
+                    "",
+                    "",
+                    "Nguyễn Minh Dũng",
+                    0,
+                    "https://i.pinimg.com/originals/b2/ce/be/b2cebefb7620f3f6ca0dc77ce92b8bbb.jpg"
+
+                ),
+                "Sản phẩm tốt, sẽ ủng hộ shop dài dài",
+                5.toFloat()
             )
         )
-        listComment.addAll(listComment)
-        listComment.addAll(listComment)
 
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         val softKeyboard = SoftKeyboard(mBinding.root, imm)
@@ -141,6 +151,15 @@ class ProductDetailActivity : BaseActivity() {
                 override fun onAddNewCommentListener() {
                     mBinding.edtComment.requestFocus()
                     imm.showSoftInput(mBinding.edtComment, InputMethodManager.SHOW_IMPLICIT)
+                    mBinding.btnSend.setOnClickListener {
+                        val comment = Comment(
+                            LoginUtils.getUserDetail(),
+                            mBinding.edtComment.text.toString(),
+                            mBinding.ratingBar.rating
+                        )
+                        addComment(comment)
+                        imm.hideSoftInputFromWindow(this@ProductDetailActivity.currentFocus?.windowToken, 0);
+                    }
                 }
             }
         }
@@ -150,7 +169,7 @@ class ProductDetailActivity : BaseActivity() {
         }
         mBinding.shopView.setOnShopClickListener(object : ShopView.OnShopViewClickListener {
             override fun onFollowClick(shopId: String) {
-
+                Toast.makeText(this@ProductDetailActivity, "Cảm ơn bạn đã theo dõi shop", Toast.LENGTH_LONG).show()
             }
 
             override fun onShopDetailClick(shopId: String) {
@@ -204,7 +223,7 @@ class ProductDetailActivity : BaseActivity() {
     }
 
     override fun onRefreshing() {
-        viewModel.loadProductDetail(id)
+        viewModel.load(id, isFromTIki)
     }
 
     private fun bindDetailProduct(productDetail: ProductDetail) {

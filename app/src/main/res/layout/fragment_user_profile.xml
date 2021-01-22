@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:fitsSystemWindows="true"
+<LinearLayout android:fitsSystemWindows="true"
     android:orientation="vertical"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -23,29 +21,67 @@
             android:layout_width="@dimen/d_80"
             android:layout_height="@dimen/d_80"/>
 
-        <LinearLayout
-            android:paddingHorizontal="@dimen/d_8"
+        <FrameLayout
             android:layout_centerVertical="true"
             android:orientation="vertical"
             android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
             android:layout_toEndOf="@+id/ivAvatar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/ivAvatar"
             android:layout_alignParentEnd="true">
 
-            <TextView
-                android:text="Chào mừng bạn đến với Tipee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:id="@+id/llSignIn"
+                android:visibility="gone"
+                android:paddingHorizontal="@dimen/d_8"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:text="Đăng nhập/ Đăng kí"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                <TextView
+                    android:fontFamily="@font/nunito_sans"
+                    android:textSize="@dimen/sp_20"
+                    android:textColor="@color/gray_333333"
+                    android:text="Chào mừng bạn đến với Tipee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-        </LinearLayout>
+                <TextView
+                    android:fontFamily="@font/nunito_sans"
+                    android:textSize="@dimen/sp_15"
+                    android:textColor="@color/gray_333333"
+                    android:text="Đăng nhập/ Đăng kí"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llUser"
+                android:paddingHorizontal="@dimen/d_8"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:fontFamily="@font/nunito_sans"
+                    android:textSize="@dimen/sp_20"
+                    android:textColor="@color/gray_333333"
+                    android:text="Xin chào"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tvBalance"
+                    android:text="Số dư ví: "
+                    android:fontFamily="@font/nunito_sans"
+                    android:textSize="@dimen/sp_15"
+                    android:textColor="@color/gray_333333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </FrameLayout>
 
     </RelativeLayout>
 
@@ -67,7 +103,10 @@
 
         <TextView
             android:layout_marginStart="@dimen/d_8"
-            android:text="Quản lý đơn hàng"
+            android:fontFamily="@font/nunito_sans"
+            android:textSize="@dimen/sp_17"
+            android:textColor="@color/gray_333333"
+            android:text="Giỏ hàng"
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,6 +133,9 @@
         <TextView
             android:layout_marginStart="@dimen/d_8"
             android:text="Sản phẩm yêu thích"
+            android:fontFamily="@font/nunito_sans"
+            android:textSize="@dimen/sp_17"
+            android:textColor="@color/gray_333333"
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,16 +162,19 @@
         <TextView
             android:layout_marginStart="@dimen/d_8"
             android:text="Sản phẩm đã mua"
+            android:fontFamily="@font/nunito_sans"
+            android:textSize="@dimen/sp_17"
+            android:textColor="@color/gray_333333"
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/d_8" />
-
     </LinearLayout>
 
-    <include layout="@layout/space_1dp"/>
+    <include layout="@layout/space_1dp" android:visibility="gone"/>
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_marginVertical="@dimen/d_8"
         android:paddingHorizontal="@dimen/d_8"
         android:orientation="horizontal"
@@ -146,6 +191,9 @@
         <TextView
             android:layout_marginStart="@dimen/d_8"
             android:text="Shop của bạn"
+            android:fontFamily="@font/nunito_sans"
+            android:textSize="@dimen/sp_17"
+            android:textColor="@color/gray_333333"
             android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -154,5 +202,19 @@
     </LinearLayout>
 
     <include layout="@layout/space_3dp"/>
+
+    <TextView
+        android:id="@+id/btnLogout"
+        android:layout_marginTop="@dimen/d_8"
+        android:paddingVertical="@dimen/d_5"
+        android:gravity="center"
+        android:fontFamily="@font/nunito_sans"
+        android:textSize="@dimen/sp_20"
+        android:textColor="@color/white"
+        android:text="Đăng xuất"
+        android:background="@drawable/btn_text_blue"
+        android:layout_marginHorizontal="@dimen/d_8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

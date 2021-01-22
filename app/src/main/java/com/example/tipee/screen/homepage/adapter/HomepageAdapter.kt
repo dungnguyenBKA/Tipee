@@ -57,7 +57,7 @@ class HomepageAdapter(var homepageData: ArrayList<HomepageItem>, var listener: O
             val snap = StartSnapHelper()
             b.rvCate1.setOnFlingListener(null);
             snap.attachToRecyclerView(b.rvCate1)
-            b.rvCate1.adapter = Category1Adapter(homepageItem.product, object : Category1Adapter.OnViewClickListener {
+            b.rvCate1.adapter = Category1Adapter(homepageItem.product_set, object : Category1Adapter.OnViewClickListener {
                 override fun onItemProductClick(productDetail: ProductDetail) {
                     ProductDetailActivity.start(b.root.context, productDetail.id)
                 }

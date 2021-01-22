@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tipee.databinding.ItemCategory1Binding
 import com.example.tipee.model.ProductDetail
+import com.example.tipee.utils.LoadImage
 import com.example.tipee.utils.MoneyUtils
 
 class Category1Adapter(var listProduct: List<ProductDetail>, var listener: OnViewClickListener) :
@@ -50,6 +51,8 @@ class Category1Adapter(var listProduct: List<ProductDetail>, var listener: OnVie
             b.tvPrice.text = MoneyUtils.toVND(productDetail.price)
 
             b.tvItemName.text = productDetail.name
+
+            LoadImage.loadImage(productDetail.thumbnail_url, b.ivItem)
         }
     }
 }

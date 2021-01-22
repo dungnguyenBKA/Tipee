@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/gray_333333"
             android:fontFamily="@font/nunito_sans_semibold"
-            android:text="Shop bán đồ chơi"
+            android:text="TIki trading"
             android:textSize="@dimen/sp_20" />
 
         <TextView
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/d_5"
             android:fontFamily="@font/nunito_sans"
-            android:text="Chưa có theo dõi"
+            android:text="1k theo dõi"
             android:textColor="@color/gray_333333"
             android:textSize="@dimen/sp_15" />
 
