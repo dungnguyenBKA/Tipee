@@ -11,7 +11,6 @@ data class ProductDetail(
     var min_qty: Int,
     var max_qty: Int,
     var quantity: Int,
-    var category: String,
     var short_description: String,
     var description: String,
     var thumbnail_url: String,

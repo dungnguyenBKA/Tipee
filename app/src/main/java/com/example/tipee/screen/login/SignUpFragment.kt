@@ -79,6 +79,7 @@ class SignUpFragment : BaseFragment() {
             )
 
             LoginUtils.login(userDetail)
+            requireActivity().finish()
             //mViewModel.uploadUser(userDetail)
         }
 
