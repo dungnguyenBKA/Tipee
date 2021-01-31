@@ -103,7 +103,7 @@ dependencies {
     // lottie animation
     implementation "com.airbnb.android:lottie:3.6.0"
 
-    //coroutin
+    // coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
 
     // refreshLayout

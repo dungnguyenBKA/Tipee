@@ -4,20 +4,20 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import com.example.tipee.base.BaseActivity
-import com.example.tipee.databinding.BannerViewBinding
+import com.example.tipee.databinding.TestActivityBinding
 
-class TestBannerActivity : BaseActivity() {
+class TestActivity : BaseActivity() {
     companion object {
         @JvmStatic
         fun start(context: Context) {
-            val starter = Intent(context, TestBannerActivity::class.java)
+            val starter = Intent(context, TestActivity::class.java)
             context.startActivity(starter)
         }
     }
 
-    private lateinit var mBinding: BannerViewBinding
+    private lateinit var mBinding: TestActivityBinding
     override fun getViewBinding(): View {
-        mBinding = BannerViewBinding.inflate(layoutInflater)
+        mBinding = TestActivityBinding.inflate(layoutInflater)
         return mBinding.root
     }
 
@@ -25,7 +25,5 @@ class TestBannerActivity : BaseActivity() {
     }
 
     override fun configViews() {
-//        val data = arrayListOf("1", "2", "", "")
-//        mBinding.bannerView.loadDataBanner(data)
     }
 }

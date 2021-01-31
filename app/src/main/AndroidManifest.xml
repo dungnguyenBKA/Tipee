@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Tipee">
         <activity android:name=".screen.favourite.FavouriteActivity" />
         <activity android:name=".screen.shopdetail.ShopDetailActivity" />
-        <activity android:name=".screen.test.banner.TestBannerActivity" />
+        <activity android:name=".screen.test.banner.TestActivity" />
         <activity android:name=".screen.cart.CartActivity" />
         <activity android:name=".base.ErrorActivity" />
         <activity

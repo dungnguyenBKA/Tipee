@@ -6,6 +6,7 @@ import com.example.tipee.R
 import com.example.tipee.base.BaseActivity
 import com.example.tipee.databinding.ActivityMainBinding
 import com.example.tipee.screen.homepage.HomePageFragment
+import com.example.tipee.screen.test.banner.TestActivity
 import com.example.tipee.screen.userprofile.ProfileFragment
 import java.util.*
 
@@ -42,7 +43,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun configViews() {
-
+        TestActivity.start(this)
     }
 
     var isBackPressed = false
