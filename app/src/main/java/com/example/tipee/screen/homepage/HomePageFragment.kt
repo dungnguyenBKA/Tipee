@@ -3,65 +3,47 @@ package com.example.tipee.screen.homepage
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import com.example.tipee.base.BaseFragment
 import com.example.tipee.databinding.FragmentHomepageBinding
-import com.example.tipee.model.response.HomepageItem
-import com.example.tipee.screen.homepage.adapter.HomepageAdapter
-import com.example.tipee.screen.main.PlaceHolderActivity
-import com.scwang.smart.refresh.header.MaterialHeader
+import com.example.tipee.screen.homepage.tab.TabItemFragment
+import com.example.tipee.screen.main.PagerAdapter
+import com.google.android.material.tabs.TabLayoutMediator
 
 class HomePageFragment: BaseFragment() {
     private lateinit var mBinding: FragmentHomepageBinding
-    private lateinit var mViewModel: HomepageViewModel
-    private var homepageData = arrayListOf<HomepageItem>()
+
     override fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?): View {
         mBinding = FragmentHomepageBinding.inflate(inflater, container, false)
         return mBinding.root
     }
 
     override fun initData(){
-        mViewModel = ViewModelProvider(this).get(HomepageViewModel::class.java)
-        observableData()
-    }
-
-    override fun onRefreshing() {
-        mViewModel.loadHomepage()
-    }
-
-    override fun observableData() {
-        mViewModel.homepageData.observe(this, {
-            homepageData.clear()
-            homepageData.addAll(it)
-            if(this::mAdapter.isInitialized){
-                mAdapter.notifyDataSetChanged()
-            }
-        })
-
-        mViewModel.isLoading.observe(this, {
-            if(it){
-                showLoadingScreen(mBinding.root)
-            } else {
-                closeLoadingScreen()
-            }
-        })
-    }
-
-    private lateinit var mAdapter: HomepageAdapter
-    override fun configViews() {
-        mBinding.contentHomepage.refreshLayout.apply {
-            setRefreshHeader(MaterialHeader(requireContext()))
-            setOnRefreshListener {
-                onRefreshing()
-                it.finishRefresh(2000)
-            }
+        val pagerAdapter = PagerAdapter(requireActivity())
+        for (i in 0..2) {
+            pagerAdapter.addFragment(TabItemFragment.newInstance(i))
         }
-        mAdapter = HomepageAdapter(homepageData, object : HomepageAdapter.OnViewClickListener{
-            override fun onTitleClick(idCategory: String) {
-                PlaceHolderActivity.start(requireContext())
+        mBinding.vpTabItem.apply {
+            adapter = pagerAdapter
+        }
+        TabLayoutMediator(mBinding.tabLayout, mBinding.vpTabItem
+        ) { tab, position ->
+            when (position) {
+                0 -> {
+                    tab.text = "Gợi ý hôm nay"
+                }
+
+                2 -> {
+                    tab.text = "Có thể bạn quan tâm"
+                }
+
+                1 -> {
+                    tab.text = "HOT"
+                }
             }
-        })
-        mBinding.contentHomepage.rvHomePage.adapter = mAdapter
-        mViewModel.loadHomepage()
+        }.attach()
+    }
+
+    override fun configViews() {
+
     }
 }

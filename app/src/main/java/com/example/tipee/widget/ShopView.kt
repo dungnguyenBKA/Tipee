@@ -5,12 +5,13 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.example.tipee.databinding.ShopViewBinding
+import com.example.tipee.screen.productdetail.adapter.ShopDetail
 import com.example.tipee.utils.LoadImage
 
 class ShopView : LinearLayout {
     interface OnShopViewClickListener{
-        fun onFollowClick(shopId: String)
-        fun onShopDetailClick(shopId: String)
+        fun onFollowClick(shop: ShopDetail)
+        fun onShopDetailClick(shop: ShopDetail)
     }
     private var listener: OnShopViewClickListener? = null
     private lateinit var mBinding: ShopViewBinding
@@ -39,21 +40,19 @@ class ShopView : LinearLayout {
         this.listener = onShopViewClickListener
     }
 
-    fun loadShopData(){
-        //LoadImage.loadImage("", mBinding.ivShopLogo)
-        LoadImage.loadImage("https://theme.zdassets.com/theme_assets/509975/341ca621965b7814f0317d5f507249af65fe33e6.png", mBinding.ivShopLogo)
-        mBinding.tvShopName.text = "Tipee Trading"
+    fun loadShopData(shop: ShopDetail){
+        LoadImage.loadImage(shop.logo, mBinding.ivShopLogo)
+        mBinding.tvShopName.text = shop.name
         mBinding.rbShop.rating = 4f
         mBinding.tvTotalRating.text = "(Chưa có rating)"
-        // TODO: 12/23/2020 add condition id
         mBinding.tvFollowShop.setOnClickListener {
-            listener?.onFollowClick("123456")
+            listener?.onFollowClick(shop)
         }
         mBinding.llShop.setOnClickListener {
-            listener?.onShopDetailClick("123456")
+            listener?.onShopDetailClick(shop)
         }
         mBinding.ivShopLogo.setOnClickListener {
-            listener?.onShopDetailClick("123456")
+            listener?.onShopDetailClick(shop)
         }
     }
 }

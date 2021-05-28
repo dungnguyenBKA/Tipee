@@ -90,6 +90,7 @@
                     android:textSize="@dimen/sp_17" />
 
                 <androidx.appcompat.widget.AppCompatRatingBar
+                    android:layout_marginBottom="@dimen/d_16"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -97,35 +98,6 @@
                     android:numStars="5"
                     android:rating="4.5"
                     android:stepSize="0.5" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/d_5"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="@dimen/d_13">
-
-                    <TextView
-                        android:id="@+id/tvPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_sans_bold"
-                        android:text="xxx.000 đ"
-                        android:textColor="@color/gray_333333"
-                        android:textSize="@dimen/sp_20" />
-
-                    <TextView
-                        android:id="@+id/tvListPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/d_13"
-                        android:fontFamily="@font/nunito_sans_bold"
-                        android:text="xxx.000 đ"
-                        android:textColor="@color/gray_8A8A8F"
-                        android:textSize="@dimen/sp_17" />
-
-                </LinearLayout>
 
                 <include layout="@layout/space_3dp" />
 
@@ -139,12 +111,11 @@
                     android:textColor="@color/gray_333333"
                     android:textSize="@dimen/sp_17" />
 
-                <com.example.tipee.widget.ShopView
-                    android:id="@+id/shopView"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvShop"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/d_5"
-                    android:paddingHorizontal="@dimen/d_13" />
+                    android:layout_height="wrap_content"/>
 
                 <include layout="@layout/space_3dp" />
 
@@ -258,7 +229,6 @@
                         android:id="@+id/edtComment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/space"
                         android:layout_marginHorizontal="@dimen/d_13"
                         android:layout_toStartOf="@id/btnUploadImage"
                         android:hint="Nhập bình luận..."
@@ -268,7 +238,6 @@
                         android:id="@+id/btnUploadImage"
                         android:layout_width="@dimen/d_30"
                         android:layout_height="@dimen/d_30"
-                        android:layout_below="@id/space"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="@dimen/d_10"
                         android:layout_toStartOf="@id/btnSend"
@@ -279,7 +248,6 @@
                         android:id="@+id/btnSend"
                         android:layout_width="@dimen/d_30"
                         android:layout_height="@dimen/d_30"
-                        android:layout_below="@id/space"
                         android:layout_alignParentEnd="true"
                         android:src="@drawable/ic_baseline_send_24" />
 

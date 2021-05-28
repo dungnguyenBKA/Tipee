@@ -8,6 +8,7 @@ import android.os.Looper
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.room.Room
@@ -22,11 +23,12 @@ import com.example.tipee.model.UserDetail
 import com.example.tipee.screen.cart.CartActivity
 import com.example.tipee.screen.main.PlaceHolderActivity
 import com.example.tipee.screen.productdetail.adapter.ImageAdapter
+import com.example.tipee.screen.productdetail.adapter.ShopAdapter
+import com.example.tipee.screen.productdetail.adapter.ShopDetail
 import com.example.tipee.screen.shopdetail.ShopDetailActivity
 import com.example.tipee.utils.*
 import com.example.tipee.utils.event.DeleteCartEvent
 import com.example.tipee.widget.HtmlActivity
-import com.example.tipee.widget.ShopView
 import com.example.tipee.widget.commentbox.CommentBox
 import com.example.tipee.widget.popup.AddToCartBottomSheet
 import kotlinx.coroutines.CoroutineScope
@@ -54,7 +56,7 @@ class ProductDetailActivity : BaseActivity() {
     private lateinit var viewModel: ProductDetailViewModel
     private lateinit var imageAdapter: ImageAdapter
     private var id: String = ""
-    private var isFromTIki = false
+    private var isFromTIki = true
     private lateinit var db: AppDatabase
     private lateinit var productDetail: ProductDetail
     override fun getViewBinding(): View {
@@ -74,7 +76,7 @@ class ProductDetailActivity : BaseActivity() {
                 id = it
             }
 
-            it.getBoolean("isTiki")?.let{
+            it.getBoolean("isTiki").let{
                 isFromTIki = it
             }
         }
@@ -101,6 +103,15 @@ class ProductDetailActivity : BaseActivity() {
         }
     }
 
+    private val mShopAdapter by lazy {
+        ShopAdapter(object: ShopAdapter.OnViewClickListener{
+            override fun onItemClick(shop: ShopDetail) {
+                shop.link.toUri().lastPathSegment?.let {
+                    ShopDetailActivity.start(this@ProductDetailActivity, it)
+                }
+            }
+        })
+    }
     override fun configViews() {
         val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(mBinding.rvImageDetail)
@@ -109,6 +120,8 @@ class ProductDetailActivity : BaseActivity() {
                 PlaceHolderActivity.start(this@ProductDetailActivity)
             }
         })
+
+        mBinding.rvShop.adapter = mShopAdapter
 
         val listComment = arrayListOf<Comment>()
         listComment.add(
@@ -167,15 +180,15 @@ class ProductDetailActivity : BaseActivity() {
         mBinding.rvImageDetail.apply {
             adapter = imageAdapter
         }
-        mBinding.shopView.setOnShopClickListener(object : ShopView.OnShopViewClickListener {
-            override fun onFollowClick(shopId: String) {
-                Toast.makeText(this@ProductDetailActivity, "Cảm ơn bạn đã theo dõi shop", Toast.LENGTH_LONG).show()
-            }
-
-            override fun onShopDetailClick(shopId: String) {
-                ShopDetailActivity.start(this@ProductDetailActivity, "tiki-trading")
-            }
-        })
+//        mBinding.shopView.setOnShopClickListener(object : ShopView.OnShopViewClickListener {
+//            override fun onFollowClick(shopId: String) {
+//                Toast.makeText(this@ProductDetailActivity, "Cảm ơn bạn đã theo dõi shop", Toast.LENGTH_LONG).show()
+//            }
+//
+//            override fun onShopDetailClick(shopId: String) {
+//                ShopDetailActivity.start(this@ProductDetailActivity, "tiki-trading")
+//            }
+//        })
 
         mBinding.ivCart.setOnClickListener {
             CartActivity.start(this)
@@ -233,12 +246,14 @@ class ProductDetailActivity : BaseActivity() {
         LoadImage.loadImage(productDetail.thumbnail_url, mBinding.ivBlurProduct)
         mBinding.tvProductName.text = productDetail.name
         mBinding.tvShortDescription.text = productDetail.short_description
-        mBinding.shopView.loadShopData()
         mBinding.viewMore.setOnClickListener {
             HtmlActivity.start(this, "Thông tin & Giới thiệu", productDetail.description)
         }
-        mBinding.tvPrice.text = MoneyUtils.toVND(productDetail.price)
-        MoneyUtils.setTextDiscount(productDetail.list_price, mBinding.tvListPrice)
+
+        val listShop = mutableListOf<ShopDetail>()
+        listShop.add(productDetail.current_seller)
+        listShop.addAll(productDetail.other_sellers)
+        mShopAdapter.submitList(listShop)
 
         CoroutineScope(Main).launch {
             if (db.orderDao().findOrderByProductId(id).isNotEmpty()) {

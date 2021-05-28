@@ -12,12 +12,13 @@ class ProductDetailViewModel : BaseViewModel() {
     private val apiTiki = RetrofitHelper.getTikiInstance()
     val mProductDetail = MutableLiveData<ProductDetail>()
 
-    fun load(id: String, isFromTiki : Boolean = false){
-        if(isFromTiki) {
-            loadProductDetailTiki(id)
-        } else {
-            loadProductDetail(id)
-        }
+    fun load(id: String, isFromTiki: Boolean){
+//        if(isFromTiki) {
+//            loadProductDetailTiki(id)
+//        } else {
+//            loadProductDetail(id)
+//        }
+        loadProductDetailTiki(id)
     }
 
     private fun loadProductDetail(id: String){

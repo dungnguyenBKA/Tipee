@@ -109,4 +109,5 @@ dependencies {
     // refreshLayout
     implementation  'com.scwang.smart:refresh-layout-kernel:2.0.3'      //core
     implementation  'com.scwang.smart:refresh-header-material:2.0.3'    //MaterialHeader
+    implementation  'com.scwang.smart:refresh-footer-ball:2.0.3'        //球脉冲加载
 }

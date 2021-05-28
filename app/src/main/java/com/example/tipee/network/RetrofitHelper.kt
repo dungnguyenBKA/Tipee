@@ -9,15 +9,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class RetrofitHelper {
-    companion object{
+    companion object {
         private const val TIKI_BASE_URL = "https://tiki.vn/api/v2/"
-        private var retrofit : Retrofit? = null
+        private var retrofit: Retrofit? = null
 
-        fun getTikiInstance(): TipeeApi{
+        fun getTikiInstance(): TipeeApi {
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
-            if(retrofit == null){
+            if (retrofit == null) {
                 retrofit = Retrofit.Builder()
                     .baseUrl(TIKI_BASE_URL)
                     .client(client)
@@ -28,16 +28,30 @@ class RetrofitHelper {
             return retrofit!!.create(TipeeApi::class.java)
         }
 
+        private const val TIKI_API_BASE_URL = "https://api.tiki.vn/personalization/v2/"
+        fun getTikiApiInstance(): TipeeApi {
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.level = HttpLoggingInterceptor.Level.BODY
+            val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
+            val retrofit = Retrofit.Builder()
+                .baseUrl(TIKI_API_BASE_URL)
+                .client(client)
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            return retrofit.create(TipeeApi::class.java)
+        }
+
         private const val TIPEE_BASE_URL = "https://tiki20201.herokuapp.com/"
-        private var retrofitTipee : Retrofit? = null
-        fun getInstance(): TipeeApi{
+        private var retrofitTipee: Retrofit? = null
+        fun getInstance(): TipeeApi {
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             val client = OkHttpClient.Builder().addInterceptor(interceptor)
                 .readTimeout(60, TimeUnit.SECONDS)
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .build()
-            if(retrofitTipee == null){
+            if (retrofitTipee == null) {
                 retrofitTipee = Retrofit.Builder()
                     .baseUrl(TIPEE_BASE_URL)
                     .client(client)
@@ -49,8 +63,8 @@ class RetrofitHelper {
         }
 
         private const val IMGUR_BASE_URL = "https://api.imgur.com/3/"
-        private var retrofitImgur : Retrofit? = null
-        fun getImgurInstance(): TipeeApi{
+        private var retrofitImgur: Retrofit? = null
+        fun getImgurInstance(): TipeeApi {
             val interceptorLog = HttpLoggingInterceptor()
             interceptorLog.level = HttpLoggingInterceptor.Level.BODY
             val client = OkHttpClient.Builder()
@@ -68,7 +82,7 @@ class RetrofitHelper {
                 .readTimeout(10, TimeUnit.SECONDS)
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .build()
-            if(retrofitImgur == null){
+            if (retrofitImgur == null) {
                 retrofitImgur = Retrofit.Builder()
                     .baseUrl(IMGUR_BASE_URL)
                     .client(client)

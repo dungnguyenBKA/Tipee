@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_marginVertical="@dimen/dp_5"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <com.example.tipee.widget.ShopView
+        android:id="@+id/shopView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textColor="@color/gray_333333"
+        android:id="@+id/tvPrice"
+        android:layout_marginStart="@dimen/sp_17"
+        android:textSize="@dimen/d_18"
+        android:fontFamily="@font/nunito_sans"
+        android:text="Giá:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
