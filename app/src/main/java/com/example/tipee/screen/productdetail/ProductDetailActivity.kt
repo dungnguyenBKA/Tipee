@@ -8,7 +8,6 @@ import android.os.Looper
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.room.Room
@@ -69,7 +68,7 @@ class ProductDetailActivity : BaseActivity() {
             applicationContext,
             AppDatabase::class.java,
             "Tipee"
-        ).allowMainThreadQueries().build()
+        ).build()
         viewModel = ViewModelProvider(this).get(ProductDetailViewModel::class.java)
         intent.extras?.let { it ->
             it.getString(ID)?.let {
@@ -80,7 +79,7 @@ class ProductDetailActivity : BaseActivity() {
                 isFromTIki = it
             }
         }
-        viewModel.load(id, isFromTIki)
+        viewModel.load(id)
         CoroutineScope(IO).launch {
             try {
                 val product = db.productDao().findProductById(id)
@@ -106,9 +105,7 @@ class ProductDetailActivity : BaseActivity() {
     private val mShopAdapter by lazy {
         ShopAdapter(object: ShopAdapter.OnViewClickListener{
             override fun onItemClick(shop: ShopDetail) {
-                shop.link.toUri().lastPathSegment?.let {
-                    ShopDetailActivity.start(this@ProductDetailActivity, it)
-                }
+                ShopDetailActivity.start(this@ProductDetailActivity, shop)
             }
         })
     }
@@ -236,7 +233,7 @@ class ProductDetailActivity : BaseActivity() {
     }
 
     override fun onRefreshing() {
-        viewModel.load(id, isFromTIki)
+        viewModel.load(id)
     }
 
     private fun bindDetailProduct(productDetail: ProductDetail) {

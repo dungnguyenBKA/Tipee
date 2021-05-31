@@ -7,6 +7,8 @@ import com.example.tipee.base.BaseFragment
 import com.example.tipee.databinding.FragmentHomepageBinding
 import com.example.tipee.screen.homepage.tab.TabItemFragment
 import com.example.tipee.screen.main.PagerAdapter
+import com.example.tipee.screen.search.SearchActivity
+import com.example.tipee.utils.setOnSingleClickListener
 import com.google.android.material.tabs.TabLayoutMediator
 
 class HomePageFragment: BaseFragment() {
@@ -44,6 +46,8 @@ class HomePageFragment: BaseFragment() {
     }
 
     override fun configViews() {
-
+        mBinding.btnSearch.setOnSingleClickListener {
+            SearchActivity.start(requireContext())
+        }
     }
 }

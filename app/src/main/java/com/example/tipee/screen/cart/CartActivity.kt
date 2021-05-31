@@ -46,7 +46,7 @@ class CartActivity : BaseActivity() {
             applicationContext,
             AppDatabase::class.java,
             "Tipee"
-        ).allowMainThreadQueries().build()
+        ).build()
     }
 
     override fun configViews() {

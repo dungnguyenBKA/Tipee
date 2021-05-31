@@ -6,6 +6,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -13,6 +14,7 @@ import com.example.tipee.base.BaseActivity
 import com.example.tipee.databinding.ActivityShopDetailBinding
 import com.example.tipee.model.ProductDetail
 import com.example.tipee.screen.productdetail.ProductDetailActivity
+import com.example.tipee.screen.productdetail.adapter.ShopDetail
 import com.example.tipee.utils.LoadImage
 import com.example.tipee.utils.hideKeyboard
 import com.scwang.smart.refresh.header.MaterialHeader
@@ -20,9 +22,9 @@ import com.scwang.smart.refresh.header.MaterialHeader
 class ShopDetailActivity : BaseActivity() {
     companion object{
         @JvmStatic
-        fun start(context: Context, shopId: String) {
+        fun start(context: Context, shop: ShopDetail) {
             val starter = Intent(context, ShopDetailActivity::class.java)
-                .putExtra("id", shopId)
+                .putExtra("shop", shop)
             context.startActivity(starter)
         }
     }
@@ -35,15 +37,14 @@ class ShopDetailActivity : BaseActivity() {
     private var mListProduct = arrayListOf<ProductDetail>()
     private var mListFilter = mutableListOf<ProductDetail>()
     private lateinit var viewModel: ShopDetailViewModel
-    private var shopId: String = ""
+    private var shop: ShopDetail = ShopDetail()
     override fun initData() {
         viewModel = ViewModelProvider(this).get(ShopDetailViewModel::class.java)
-        intent.extras?.let {
-            it.getString("id")?.let {str ->
-                shopId = str
+        intent.extras?.let { bundle ->
+            bundle.getSerializable("shop")?.let {
+                shop = it as ShopDetail
             }
         }
-        viewModel.loadShopDetail(shopId)
         observableData()
     }
 
@@ -64,11 +65,18 @@ class ShopDetailActivity : BaseActivity() {
     }
 
     override fun onRefreshing() {
-        viewModel.loadShopDetail(shopId)
+        try {
+            shop.link.toUri().lastPathSegment?.let {
+                viewModel.loadShopDetail(it)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun configViews() {
-        LoadImage.loadImage("https://theme.zdassets.com/theme_assets/509975/341ca621965b7814f0317d5f507249af65fe33e6.png", mBinding.header.ivShopLogo)
+        LoadImage.loadImage(shop.logo, mBinding.header.ivShopLogo)
+        mBinding.header.tvShopName.text = shop.name
         mBinding.refreshLayout.setRefreshHeader(MaterialHeader(this))
         mBinding.refreshLayout.setOnRefreshListener {
             onRefreshing()
@@ -97,6 +105,8 @@ class ShopDetailActivity : BaseActivity() {
                 return false
             }
         })
+
+        onRefreshing()
     }
 
     fun searchInListProduct(text: String){

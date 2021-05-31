@@ -42,7 +42,7 @@ class RetrofitHelper {
             return retrofit.create(TipeeApi::class.java)
         }
 
-        private const val TIPEE_BASE_URL = "https://tiki20201.herokuapp.com/"
+        private const val TIPEE_BASE_URL = "https://tiki.vn/"
         private var retrofitTipee: Retrofit? = null
         fun getInstance(): TipeeApi {
             val interceptor = HttpLoggingInterceptor()

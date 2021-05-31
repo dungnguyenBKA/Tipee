@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:padding="@dimen/dp_13"
     android:gravity="center_vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -57,11 +58,10 @@
                 android:layout_height="wrap_content"
                 android:text="(12 đánh giá)" />
         </LinearLayout>
-
-
     </LinearLayout>
 
     <TextView
+        android:visibility="gone"
         android:paddingHorizontal="@dimen/d_13"
         android:textColor="@color/white"
         android:paddingTop="@dimen/d_5"

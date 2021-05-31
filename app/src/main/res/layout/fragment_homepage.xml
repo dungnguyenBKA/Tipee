@@ -17,13 +17,17 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_collapseMode="pin"
+            app:contentInsetEnd="0dp"
+            app:contentInsetStart="0dp"
             app:layout_scrollFlags="snap|scroll|enterAlways">
 
-            <LinearLayout
+            <RelativeLayout
+                android:paddingHorizontal="@dimen/d_16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:layout_alignParentStart="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito_sans_bold"
@@ -31,13 +35,23 @@
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sp_26" />
-            </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btnSearch"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_baseline_search_24"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="@dimen/d_30"
+                    android:layout_height="@dimen/d_30"/>
+            </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
+            app:tabPadding="@dimen/dp_10"
             app:tabMode="scrollable"
+            app:tabInlineLabel="true"
             app:tabIndicatorHeight="@dimen/d_3"
             app:tabIndicatorColor="@color/red_ff3945"
             app:tabSelectedTextColor="@color/red_ff3945"

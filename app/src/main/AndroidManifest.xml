@@ -7,12 +7,13 @@
 
     <application
         android:name=".TipeeApplication"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:allowBackup="false"
         android:theme="@style/Theme.Tipee">
+        <activity android:name=".screen.search.SearchActivity"></activity>
         <activity android:name=".screen.favourite.FavouriteActivity" />
         <activity android:name=".screen.shopdetail.ShopDetailActivity" />
         <activity android:name=".screen.test.banner.TestActivity" />

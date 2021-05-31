@@ -12,24 +12,8 @@ class ProductDetailViewModel : BaseViewModel() {
     private val apiTiki = RetrofitHelper.getTikiInstance()
     val mProductDetail = MutableLiveData<ProductDetail>()
 
-    fun load(id: String, isFromTiki: Boolean){
-//        if(isFromTiki) {
-//            loadProductDetailTiki(id)
-//        } else {
-//            loadProductDetail(id)
-//        }
+    fun load(id: String){
         loadProductDetailTiki(id)
-    }
-
-    private fun loadProductDetail(id: String){
-        isLoading.value = true
-        api.getProductDetailTipee(id)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                mProductDetail.value = it
-                isLoading.value = false
-            }, onError)
     }
 
     private fun loadProductDetailTiki(id: String){
