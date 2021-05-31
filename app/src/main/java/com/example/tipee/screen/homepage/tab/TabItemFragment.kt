@@ -29,7 +29,6 @@ class TabItemFragment : BaseFragment() {
         mBinding = FragmentTabItemBinding.inflate(inflater, container, false)
         return mBinding.root
     }
-
     override fun initData() {
         mViewModel = ViewModelProvider(this).get(HomepageViewModelV2::class.java)
         arguments?.let {
@@ -51,6 +50,8 @@ class TabItemFragment : BaseFragment() {
         mBinding.rvTab.run {
             layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
             adapter = mAdapter
+//            isNestedScrollingEnabled = false
+            setItemViewCacheSize(20)
         }
 
         mBinding.refreshLayout.run {
@@ -76,13 +77,17 @@ class TabItemFragment : BaseFragment() {
         mViewModel.tabItem.observe(this, {
             if(itemCount == 0) {
                 itemCount = it.items.size
+                mBinding.refreshLayout.setNoMoreData(false)
                 listProducts.clear()
                 listProducts.addAll(it.items)
-                mAdapter.submitList(it.items)
+                mAdapter.submitList(listProducts)
             } else {
                 listProducts.addAll(it.items)
                 itemCount += listProducts.size
-                mAdapter.submitList(listProducts)
+                mAdapter.notifyDataSetChanged()
+                if(itemCount >= 60) {
+                    mBinding.refreshLayout.setNoMoreData(true)
+                }
             }
         })
 

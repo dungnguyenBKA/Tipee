@@ -2,7 +2,6 @@ package com.example.tipee.screen.productdetail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +16,8 @@ data class ShopDetail(
     var price: Int = 0,
     var name: String = "",
     var link: String = "",
-    var logo: String = ""
+    var logo: String = "",
+    var product_id: String = ""
 ) : Serializable
 
 class ShopAdapter(var listener: OnViewClickListener) :
@@ -56,12 +56,12 @@ class ShopAdapter(var listener: OnViewClickListener) :
             b.shopView.loadShopData(shop)
             b.shopView.setOnShopClickListener(object : ShopView.OnShopViewClickListener {
                 override fun onFollowClick(shop: ShopDetail) {
-                    Toast.makeText(b.root.context, "Cảm ơn bạn đã theo dõi shop", Toast.LENGTH_LONG)
-                        .show()
+                    ShopDetailActivity.start(b.root.context, shop)
+//                    ProductDetailActivity.start(b.root.context, shop.product_id, true)
                 }
 
                 override fun onShopDetailClick(shop: ShopDetail) {
-                    ShopDetailActivity.start(b.root.context, shop)
+
                 }
             })
             b.tvPrice.text = MoneyUtils.toVND(shop.price)

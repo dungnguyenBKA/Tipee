@@ -21,6 +21,7 @@
     <style name="CustomRatingBar" parent="android:Widget.RatingBar">
         <item name="android:minHeight">@dimen/d_22</item>
         <item name="android:maxHeight">@dimen/d_22</item>
+        <item name="colorControlActivated">#FFC107</item>
         <item name="android:progressDrawable">@drawable/abc_ratingbar_small_material</item>
         <item name="android:indeterminateDrawable">@drawable/abc_ratingbar_small_material</item>
         <item name="android:isIndicator">false</item>

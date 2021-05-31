@@ -11,6 +11,8 @@ class PagerAdapter(fa: FragmentActivity) :  FragmentStateAdapter(fa) {
         fragments.add(fragment)
     }
 
+    fun getFragment(pos: Int) = fragments[pos]
+
     override fun getItemCount(): Int = fragments.size
 
     override fun createFragment(position: Int): Fragment{

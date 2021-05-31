@@ -2,10 +2,16 @@ package com.example.tipee.screen.productdetail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tipee.R
 import com.example.tipee.databinding.ItemImageBinding
+import com.example.tipee.utils.LoadImage
+import com.youth.banner.adapter.BannerAdapter
+
+
+
 
 class ImageAdapter(var onViewClickListener: OnViewClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var listUrls: MutableList<String> = arrayListOf()
@@ -26,8 +32,7 @@ class ImageAdapter(var onViewClickListener: OnViewClickListener) : RecyclerView.
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(holder is ImageViewHolder){
-            // TODO: 12/27/2020 regex to  1000x1000
-            holder.bind(listUrls[position].replace("280x280", "1000x1000"))
+            holder.bind(listUrls[position])
         }
     }
 
@@ -45,5 +50,27 @@ class ImageAdapter(var onViewClickListener: OnViewClickListener) : RecyclerView.
                 onViewClickListener.onViewClick()
             }
         }
+    }
+}
+
+class ImageAdapterBanner(list: List<String>) :
+    BannerAdapter<String, ImageAdapterBanner.BannerViewHolder?>(list) {
+    override fun onCreateHolder(parent: ViewGroup, viewType: Int): BannerViewHolder {
+        val imageView = ImageView(parent.context)
+        imageView.layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+        imageView.scaleType = ImageView.ScaleType.CENTER_CROP
+        return BannerViewHolder(imageView)
+    }
+
+    class BannerViewHolder(view: ImageView) :
+        RecyclerView.ViewHolder(view) {
+        var imageView: ImageView = view
+    }
+
+    override fun onBindView(holder: BannerViewHolder?, data: String, position: Int, size: Int) {
+        holder?.imageView?.let { LoadImage.loadImage(data, it)}
     }
 }

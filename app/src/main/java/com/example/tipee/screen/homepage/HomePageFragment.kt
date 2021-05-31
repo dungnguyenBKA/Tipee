@@ -3,6 +3,7 @@ package com.example.tipee.screen.homepage
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager2.widget.ViewPager2
 import com.example.tipee.base.BaseFragment
 import com.example.tipee.databinding.FragmentHomepageBinding
 import com.example.tipee.screen.homepage.tab.TabItemFragment
@@ -43,6 +44,19 @@ class HomePageFragment: BaseFragment() {
                 }
             }
         }.attach()
+
+        mBinding.vpTabItem.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+//                (pagerAdapter.getFragment(position) as TabItemFragment).run {
+//                    scrollToHead()
+//                }
+                try {
+                    mBinding.scroll.scrollTo(0,0)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        })
     }
 
     override fun configViews() {

@@ -4,24 +4,24 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tipee.databinding.LayoutItemCommentBinding
-import com.example.tipee.model.Comment
+import com.example.tipee.model.Review
 import com.example.tipee.utils.LoadImage
 
-class CommentAdapter(var listComment: List<Comment>, var listener: OnItemClickListener): RecyclerView.Adapter<CommentAdapter.CommentViewHolder>() {
+class CommentAdapter(var listComment: List<Review>, var listener: OnItemClickListener): RecyclerView.Adapter<CommentAdapter.CommentViewHolder>() {
     interface OnItemClickListener{
-        fun onItemClick(comment: Comment)
+        fun onItemClick(comment: Review)
     }
 
     class CommentViewHolder(var b: LayoutItemCommentBinding, var listener: OnItemClickListener): RecyclerView.ViewHolder(b.root){
-        fun bind(comment: Comment){
+        fun bind(comment: Review){
             b.root.setOnClickListener {
                 listener.onItemClick(comment)
             }
 
-            LoadImage.loadImage(comment.userDetail.userAvatarUrl, b.ivAvatar)
+            LoadImage.loadImage(comment.created_by.userAvatarUrl, b.ivAvatar)
             b.ratingBar.rating = comment.rating
-            b.tvParentUserName.text = comment.userDetail.userRealName
-            b.tvParentComment.text = comment.comment
+            b.tvTitle.text = comment.created_by.userRealName
+            b.tvContent.text = comment.content
         }
     }
 

@@ -61,7 +61,6 @@
     </LinearLayout>
 
     <TextView
-        android:visibility="gone"
         android:paddingHorizontal="@dimen/d_13"
         android:textColor="@color/white"
         android:paddingTop="@dimen/d_5"
@@ -71,7 +70,7 @@
         android:textSize="@dimen/sp_17"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
-        android:text="Theo dõi"
+        android:text="Xem shop"
         android:id="@+id/tvFollowShop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

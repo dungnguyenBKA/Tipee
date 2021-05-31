@@ -3,6 +3,7 @@ package com.example.tipee.screen.favourite
 import android.content.Context
 import android.content.Intent
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.example.tipee.base.BaseActivity
 import com.example.tipee.database.AppDatabase
@@ -10,8 +11,6 @@ import com.example.tipee.databinding.ActivityFavouriteBinding
 import com.example.tipee.model.ProductDetail
 import com.example.tipee.screen.productdetail.ProductDetailActivity
 import com.scwang.smart.refresh.header.MaterialHeader
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
 class FavouriteActivity : BaseActivity() {
@@ -46,7 +45,7 @@ class FavouriteActivity : BaseActivity() {
             override fun onItemDelete(productDetail: ProductDetail, adapterPosition: Int) {
                 if(listProduct.contains(productDetail)){
                     try {
-                        CoroutineScope(IO).launch {
+                        lifecycleScope.launch {
                             db.productDao().delete(productDetail)
                         }
                         listProduct.remove(productDetail)
@@ -58,16 +57,17 @@ class FavouriteActivity : BaseActivity() {
             }
         })
 
-        CoroutineScope(IO).launch {
+        lifecycleScope.launchWhenCreated {
             listProduct.clear()
             listProduct.addAll(db.productDao().getAll())
-
-            mAdapter.notifyDataSetChanged()
+            runOnUiThread{
+                mAdapter.notifyDataSetChanged()
+            }
         }
     }
 
     override fun onRefreshing() {
-        CoroutineScope(IO).launch {
+        lifecycleScope.launch {
             listProduct.clear()
             listProduct.addAll(db.productDao().getAll())
             runOnUiThread{

@@ -43,7 +43,9 @@ class SearchViewModel : BaseViewModel() {
             listItemElements.forEach { ele ->
                 val pro = ProductDetail()
                 val link = ele.attr("href")
-                pro.id = link.subSequence(link.indexOf("-p")+2, link.indexOf(".html")).toString()
+                pro.id = link.subSequence(link.lastIndexOf("-p")+2, link.indexOf(".html")).toString()
+                val removeBarge = ele.getElementsByClass("badge-top")
+                removeBarge.remove()
                 ele.getElementsByClass("thumbnail")[0].getElementsByTag("img").run {
                     pro.thumbnail_url = attr("src")
                 }

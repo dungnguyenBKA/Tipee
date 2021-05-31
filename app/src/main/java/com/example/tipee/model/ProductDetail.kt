@@ -1,6 +1,7 @@
 package com.example.tipee.model
 
 import androidx.room.Entity
+import androidx.room.Ignore
 import com.example.tipee.screen.productdetail.adapter.ShopDetail
 
 @Entity(primaryKeys = ["id"])
@@ -19,5 +20,11 @@ data class ProductDetail(
     var list_price: Int = 0,
     var isLike: Boolean = false,
     var current_seller: ShopDetail = ShopDetail(),
-    var other_sellers: List<ShopDetail> = mutableListOf()
+    var other_sellers: List<ShopDetail> = mutableListOf(),
+    @Ignore
+    var images: List<ProductImage> = mutableListOf()
+)
+
+data class ProductImage(
+    var large_url: String
 )

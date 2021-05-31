@@ -70,26 +70,26 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvImageDetail"
+                <com.youth.banner.Banner
+                    app:banner_indicator_height="@dimen/d_3"
+                    app:banner_indicator_gravity="right"
+                    android:id="@+id/banner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_image" />
+                    android:layout_height="@dimen/d_340"/>
 
                 <TextView
                     android:id="@+id/tvProductName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/d_5"
-                    android:fontFamily="@font/nunito_sans"
+                    android:fontFamily="@font/nunito_sans_semibold"
                     android:paddingHorizontal="@dimen/d_13"
                     android:text="Product name"
                     android:textColor="@color/gray_333333"
-                    android:textSize="@dimen/sp_17" />
+                    android:textSize="@dimen/sp_20" />
 
                 <androidx.appcompat.widget.AppCompatRatingBar
+                    android:layout_marginTop="@dimen/d_8"
                     android:layout_marginBottom="@dimen/d_16"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
@@ -184,7 +184,6 @@
                 <include layout="@layout/space_3dp" />
 
                 <com.example.tipee.widget.commentbox.CommentBox
-                    android:visibility="gone"
                     android:id="@+id/commentBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

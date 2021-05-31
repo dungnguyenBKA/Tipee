@@ -9,19 +9,17 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.example.tipee.R
 import com.example.tipee.base.BaseActivity
 import com.example.tipee.database.AppDatabase
 import com.example.tipee.database.entity.Order
 import com.example.tipee.databinding.ActivityProductDetailBinding
-import com.example.tipee.model.Comment
 import com.example.tipee.model.ProductDetail
-import com.example.tipee.model.UserDetail
+import com.example.tipee.model.Review
 import com.example.tipee.screen.cart.CartActivity
-import com.example.tipee.screen.main.PlaceHolderActivity
-import com.example.tipee.screen.productdetail.adapter.ImageAdapter
+import com.example.tipee.screen.productdetail.adapter.ImageAdapterBanner
 import com.example.tipee.screen.productdetail.adapter.ShopAdapter
 import com.example.tipee.screen.productdetail.adapter.ShopDetail
 import com.example.tipee.screen.shopdetail.ShopDetailActivity
@@ -30,12 +28,11 @@ import com.example.tipee.utils.event.DeleteCartEvent
 import com.example.tipee.widget.HtmlActivity
 import com.example.tipee.widget.commentbox.CommentBox
 import com.example.tipee.widget.popup.AddToCartBottomSheet
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
+import com.youth.banner.indicator.CircleIndicator
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
+import java.util.*
 
 @SuppressLint("SetTextI18n")
 class ProductDetailActivity : BaseActivity() {
@@ -53,7 +50,6 @@ class ProductDetailActivity : BaseActivity() {
 
     private lateinit var mBinding: ActivityProductDetailBinding
     private lateinit var viewModel: ProductDetailViewModel
-    private lateinit var imageAdapter: ImageAdapter
     private var id: String = ""
     private var isFromTIki = true
     private lateinit var db: AppDatabase
@@ -79,8 +75,8 @@ class ProductDetailActivity : BaseActivity() {
                 isFromTIki = it
             }
         }
-        viewModel.load(id)
-        CoroutineScope(IO).launch {
+
+        lifecycleScope.launch {
             try {
                 val product = db.productDao().findProductById(id)
                 Handler(Looper.getMainLooper()).post {
@@ -90,8 +86,8 @@ class ProductDetailActivity : BaseActivity() {
                 e.printStackTrace()
             }
         }
-
         observableData()
+        onRefreshing()
     }
 
     private fun toggleLikeBtn(isLiked: Boolean) {
@@ -110,33 +106,8 @@ class ProductDetailActivity : BaseActivity() {
         })
     }
     override fun configViews() {
-        val snapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(mBinding.rvImageDetail)
-        imageAdapter = ImageAdapter(object : ImageAdapter.OnViewClickListener {
-            override fun onViewClick() {
-                PlaceHolderActivity.start(this@ProductDetailActivity)
-            }
-        })
-
         mBinding.rvShop.adapter = mShopAdapter
-
-        val listComment = arrayListOf<Comment>()
-        listComment.add(
-            Comment(
-                UserDetail(
-                    "",
-                    "",
-                    "",
-                    "Nguyễn Minh Dũng",
-                    0,
-                    "https://i.pinimg.com/originals/b2/ce/be/b2cebefb7620f3f6ca0dc77ce92b8bbb.jpg"
-
-                ),
-                "Sản phẩm tốt, sẽ ủng hộ shop dài dài",
-                5.toFloat()
-            )
-        )
-
+        mBinding.rvShop.isNestedScrollingEnabled =false
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         val softKeyboard = SoftKeyboard(mBinding.root, imm)
         softKeyboard.setSoftKeyboardCallback(object : SoftKeyboard.SoftKeyboardChanged{
@@ -156,36 +127,24 @@ class ProductDetailActivity : BaseActivity() {
         })
 
         mBinding.commentBox.apply {
-            bindComment(listComment)
             listener = object : CommentBox.OnAddNewCommentListener{
                 override fun onAddNewCommentListener() {
                     mBinding.edtComment.requestFocus()
                     imm.showSoftInput(mBinding.edtComment, InputMethodManager.SHOW_IMPLICIT)
                     mBinding.btnSend.setOnClickListener {
-                        val comment = Comment(
-                            LoginUtils.getUserDetail(),
+                        val comment = Review(
+                            "",
                             mBinding.edtComment.text.toString(),
-                            mBinding.ratingBar.rating
+                            mBinding.ratingBar.rating,
+                            created_at = Date().time,
+                            created_by = LoginUtils.getUserDetail()
                         )
                         addComment(comment)
-                        imm.hideSoftInputFromWindow(this@ProductDetailActivity.currentFocus?.windowToken, 0);
+                        hideKeyboard()
                     }
                 }
             }
         }
-
-        mBinding.rvImageDetail.apply {
-            adapter = imageAdapter
-        }
-//        mBinding.shopView.setOnShopClickListener(object : ShopView.OnShopViewClickListener {
-//            override fun onFollowClick(shopId: String) {
-//                Toast.makeText(this@ProductDetailActivity, "Cảm ơn bạn đã theo dõi shop", Toast.LENGTH_LONG).show()
-//            }
-//
-//            override fun onShopDetailClick(shopId: String) {
-//                ShopDetailActivity.start(this@ProductDetailActivity, "tiki-trading")
-//            }
-//        })
 
         mBinding.ivCart.setOnClickListener {
             CartActivity.start(this)
@@ -230,16 +189,25 @@ class ProductDetailActivity : BaseActivity() {
                 showError()
             }
         })
+
+        viewModel.productReviews.observe(this, {
+            mBinding.commentBox.bindComment(it)
+        })
     }
 
     override fun onRefreshing() {
         viewModel.load(id)
+        viewModel.loadReview(id)
     }
 
     private fun bindDetailProduct(productDetail: ProductDetail) {
         this.productDetail = productDetail
-        toggleLikeBtn(productDetail.isLike)
-        imageAdapter.listUrls = arrayListOf(productDetail.thumbnail_url)
+//        toggleLikeBtn(productDetail.isLike)
+        mBinding.banner.run {
+            addBannerLifecycleObserver(this@ProductDetailActivity)
+            indicator = CircleIndicator(this@ProductDetailActivity)
+            adapter = ImageAdapterBanner(productDetail.images.map { it.large_url })
+        }
         LoadImage.loadImage(productDetail.thumbnail_url, mBinding.ivBlurProduct)
         mBinding.tvProductName.text = productDetail.name
         mBinding.tvShortDescription.text = productDetail.short_description
@@ -252,7 +220,7 @@ class ProductDetailActivity : BaseActivity() {
         listShop.addAll(productDetail.other_sellers)
         mShopAdapter.submitList(listShop)
 
-        CoroutineScope(Main).launch {
+        lifecycleScope.launchWhenCreated {
             if (db.orderDao().findOrderByProductId(id).isNotEmpty()) {
                 mBinding.tvPick.text = "Sửa đơn hàng"
             } else {
@@ -263,13 +231,13 @@ class ProductDetailActivity : BaseActivity() {
         mBinding.ivLike.setOnClickListener {
             try {
                 if(!productDetail.isLike){
-                    CoroutineScope(IO).launch {
+                    lifecycleScope.launch {
                         db.productDao().insertProduct(productDetail)
                     }
                 } else {
-                    CoroutineScope(IO).launch {
-                        db.productDao().delete(productDetail)
-                    }
+                     lifecycleScope.launch {
+                         db.productDao().delete(productDetail)
+                     }
                 }
 
                 productDetail.isLike = !productDetail.isLike
@@ -281,7 +249,7 @@ class ProductDetailActivity : BaseActivity() {
 
         mBinding.tvPick.setOnClickListener {
 
-            CoroutineScope(IO).launch {
+            lifecycleScope.launch {
                 val orderFinder = db.orderDao().findOrderByProductId(productDetail.id)
                 val order = if (orderFinder.isNotEmpty()) {
                     orderFinder[0]

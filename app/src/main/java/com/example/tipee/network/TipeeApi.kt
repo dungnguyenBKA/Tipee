@@ -2,6 +2,7 @@ package com.example.tipee.network
 
 import com.example.tipee.model.BaseResponse
 import com.example.tipee.model.ProductDetail
+import com.example.tipee.model.Review
 import com.example.tipee.model.response.TabItem
 import com.example.tipee.screen.main.UploadImageViewModel
 import io.reactivex.rxjava3.core.Observable
@@ -30,4 +31,7 @@ interface TipeeApi {
 
     @GET("search")
     fun search(@Query("q" ) q: String = "") : Observable<Response<ResponseBody>>
+
+    @GET("reviews")
+    fun getReviews(@Query("product_id" ) productId: String = "") : Observable<BaseResponse<List<Review>>>
 }
